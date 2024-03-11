@@ -15,6 +15,7 @@ CREATE TABLE "home_item" (
     "re_date" TIMESTAMP NOT NULL,
     "location" VARCHAR (80) NOT NULL,
     "priority_level" INTEGER NOT NULL,
+    "is_complete" BOOLEAN DEFAULT FALSE,
     "user_id" INTEGER REFERENCES "user"
 );
 
