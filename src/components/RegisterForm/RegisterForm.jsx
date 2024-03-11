@@ -17,7 +17,9 @@ function RegisterForm() {
       type: 'REGISTER',
       payload: {
         username: username,
+        f_name: firstName,
         password: password,
+        home_address: address
       },
     });
   }; // end registerUser
@@ -55,18 +57,6 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <label htmlFor="home_address">
-          Home Address:
-          <input
-            type="text"
-            name="address"
-            value={address}
-            required
-            onChange={(event) => setAddress(event.target.value)}
-          />
-        </label>
-      </div>
-      <div>
         <label htmlFor="password">
           Password:
           <input
@@ -75,6 +65,18 @@ function RegisterForm() {
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="home_address">
+          Home Address:
+          <input
+            type="text"
+            name="address"
+            value={address}
+            required
+            onChange={(event) => setAddress(event.target.value)}
           />
         </label>
       </div>
