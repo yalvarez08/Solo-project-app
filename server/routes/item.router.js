@@ -11,11 +11,27 @@ router.get('/', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log(err);
+      console.log('Error with GET all items', err);
       res.sendStatus(500);
     })
 });
 
+// GET details of only selected home item
+router.get('/:id', (req, res) => {
+  const id = req.params.id;
+  console.log('req.params.id selected item:', id);
+  const sqlText = `
+      SELECT home_item.name, home_item.re_date, home_item.location, home_item.priority_level FROM "home_item"
+      WHERE home_item.id = $1;`;
+    pool.query(sqlText, [id])
+    .then(result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('Error with GET /api/item/:id', err);
+      res.sendStatus(500);
+    })
+});
 
 // POST new item to db
 router.post('/', (req, res) => {
