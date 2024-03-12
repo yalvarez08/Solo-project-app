@@ -15,7 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import HomeDashboard from '../HomeDashboard/HomeDashboard';
-import InfoPage from '../InfoPage/InfoPage';
+import ItemDetails from '../ItemDetails/ItemDetails';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -61,11 +61,11 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows ItemDetails else shows LoginPage
             exact
-            path="/info"
+            path="/item-details"
           >
-            <InfoPage />
+            <ItemDetails />
           </ProtectedRoute>
 
           <Route
