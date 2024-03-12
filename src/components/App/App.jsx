@@ -67,6 +67,7 @@ function App() {
           >
             <ItemDetails />
           </ProtectedRoute>
+          
           <ProtectedRoute
             exact
             path="/add-item">
