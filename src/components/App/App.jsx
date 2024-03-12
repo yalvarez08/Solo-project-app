@@ -12,7 +12,6 @@ import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import HomeDashboard from '../HomeDashboard/HomeDashboard';
 import ItemDetails from '../ItemDetails/ItemDetails';
@@ -63,7 +62,7 @@ function App() {
           <ProtectedRoute
             // logged in shows ItemDetails else shows LoginPage
             exact
-            path="/item-details"
+            path="/item-details/:id"
           >
             <ItemDetails />
           </ProtectedRoute>

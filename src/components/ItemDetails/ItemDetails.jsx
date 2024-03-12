@@ -6,19 +6,37 @@ function ItemDetails() {
   const dispatch = useDispatch();
   const {id} = useParams();
   const history = useHistory();
-  const item = useSelector(store => store.item);
+  const itemDetails = useSelector(store => store.itemDetails);
 
   useEffect(() => {
     dispatch({type: 'FETCH_ITEM_DETAILS', payload: id});
   }, []);
 
-  // const renderDetails = () => {
-   
-  // }
+  const renderDetails = () => {
+   if(itemDetails.length > 0) {
+    return (
+      <>
+      <h2>{itemDetails[0].name}</h2>
+      <img width={50} height={50} src={"/home-placeholder.jpeg"} />
+      <p>Priority level: {itemDetails[0].priority_level}</p>
+      <p>{itemDetails[0].location}</p>
+      <p>{itemDetails[0].re_date}</p>
+      </>
+    )
+  } else {
+    return <h3>No details at this time. Try again later.</h3>
+  }}
+
   return (
+    <>
     <div className="container">
-      <p>Item Details</p>
+      <h2>Item Details</h2>
+      <button onClick={() => history.push('/user')}>Back to dashboard</button>
     </div>
+    <div>
+      {renderDetails()}
+    </div>
+    </>
   );
 }
 

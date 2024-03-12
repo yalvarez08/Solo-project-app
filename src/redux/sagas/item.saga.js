@@ -10,7 +10,7 @@ function* fetchItem() {
       const response = yield axios.get('/api/item', config);
       yield put({ type: 'SET_ITEM', payload: response.data });
     } catch (err) {
-      console.log('item GET request failed', err);
+      console.log('fetchItem failed.', err);
     }
   }
 
@@ -26,7 +26,7 @@ function* fetchItem() {
         yield put({type: 'FETCH_ITEM'});
         yield put({ type: 'SET_ITEM', payload: action.payload});
       } catch (error) {
-        console.log('POST /api/item request failed:', error);
+        console.log('AddMaintenanceItem failed:', error);
       }
     }
 

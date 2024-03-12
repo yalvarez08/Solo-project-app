@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
 import axios from 'axios';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
@@ -28,14 +27,11 @@ function HomeDashboard() {
     {item.map(entry => {
       return(
         <div key={entry.id}>
-        <li key={entry.id}> <img width={50} height={50} src={"/public/home-placeholder.jpeg"} onClick={() => history.push(`/item-details`)}/>{entry.name} priority level: {entry.priority_level}</li>
-        
-      </div>
+          <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}</li>
+        </div>
       );
-      })}
+    })}
     </div>
-
-    <LogOutButton className="btn" />
     </>
   );
 }
