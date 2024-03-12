@@ -15,6 +15,7 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
 import HomeDashboard from '../HomeDashboard/HomeDashboard';
 import ItemDetails from '../ItemDetails/ItemDetails';
+import AddHomeItem from '../AddHomeItem/AddHomeItem';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -65,6 +66,11 @@ function App() {
             path="/item-details/:id"
           >
             <ItemDetails />
+          </ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/add-item">
+              <AddHomeItem />
           </ProtectedRoute>
 
           <Route

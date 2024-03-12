@@ -32,6 +32,9 @@ function HomeDashboard() {
       );
     })}
     </div>
+    <div>
+      <button onClick={() => history.push(`/add-item`)}>Add Home Item</button>
+    </div>
     </>
   );
 }
