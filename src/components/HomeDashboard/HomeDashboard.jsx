@@ -14,6 +14,9 @@ function HomeDashboard() {
     dispatch({type: 'FETCH_ITEM'});
   }, []);
   
+  const deleteHomeItem = (id) => {
+    dispatch({type: 'DELETE_ITEM', payload: id});
+  }
 
   return (
     <>
@@ -33,7 +36,7 @@ function HomeDashboard() {
     })}
     </div>
     <div>
-      <button onClick={() => history.push(`/add-item`)}>Add Home Item</button>
+      <button className="btn" onClick={() => history.push('/add-item')}>Add Home Item</button>
     </div>
     </>
   );
