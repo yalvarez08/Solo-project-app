@@ -17,6 +17,7 @@ function HomeDashboard() {
   
   const deleteHomeItem = (id, user_id) => {
     dispatch({type: 'DELETE_ITEM', payload: {id, user_id}});
+    alert(`Item with id ${id} was successfully deleted.`)
   }
 
   // const markItemComplete = () => {
