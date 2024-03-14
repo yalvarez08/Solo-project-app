@@ -19,6 +19,10 @@ function HomeDashboard() {
     dispatch({type: 'DELETE_ITEM', payload: {id, user_id}});
   }
 
+  // const markItemComplete = () => {
+
+  // }
+
   const renderHomeItems = () => {
     return (<>
       {item.map(entry => {
@@ -28,7 +32,7 @@ function HomeDashboard() {
           </li>
         </div>
       );
-    })}
+      })}
     </>)
   };
   
@@ -46,7 +50,9 @@ function HomeDashboard() {
         return(
           <div key={entry.id}>
             <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
-            <button>☑️</button> <button>❌</button></li>
+            <button>☑️</button> 
+            {entry.user_id === user.id && <button onClick={() => deleteHomeItem(entry.id, entry.user_id)}>❌</button>}
+            </li>
           </div>
         );
       })}
@@ -54,8 +60,6 @@ function HomeDashboard() {
     </div>
     <div>
       <button className="btn" onClick={() => history.push('/add-item')}>Add Home Item</button>
-    </div>
-    <div>
       <button className="btn" onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</button>
     </div>
     </>

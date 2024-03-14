@@ -40,7 +40,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('POST item req.body:', req.body)
   const sqlText = `INSERT INTO "home_item" ("name", "re_date", "location", "priority_level", "user_id")
                   VALUES ($1, $2, $3, $4, $5);`;
-  const itemData = [req.body.name, req.body.re_date, req.body.location, req.body.priority_level, req.user_id];
+  const itemData = [req.body.name, req.body.re_date, req.body.location, req.body.priority_level, req.user.id];
     pool.query(sqlText, itemData)
     .then(result => {
       console.log('POST item was successful')
