@@ -43,27 +43,10 @@ function* DeleteHomeItem(action) {
   }
 }
 
-function* UpdateAsComplete(action) {
-  console.log('updated item:', action.payload)
-  try {
-    const config = {
-      headers: { 'Content-Type': 'application/json' },
-      withCredentials: true,
-      data: {user_id: action.payload.user_id, is_complete: action.payload.is_complete},
-    };
-    yield axios.put(`/api/item/${action.payload.id}`, config);
-    yield put({type: 'FETCH_ITEM'});
-  } catch (err) {
-    console.log('UpdateAsComplete failed:', err);
-  }
-}
-
 function* itemSaga() {
     yield takeLatest('FETCH_ITEM', fetchItem);
     yield takeLatest('ADD_ITEM', AddHomeItem);
     yield takeLatest('DELETE_ITEM', DeleteHomeItem);
-    yield takeLatest('UPDATE_ITEM', UpdateAsComplete);
-
   }
   
   export default itemSaga;

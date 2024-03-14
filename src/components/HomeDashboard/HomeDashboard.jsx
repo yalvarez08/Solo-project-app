@@ -6,6 +6,8 @@ import {useHistory} from 'react-router-dom';
 function HomeDashboard() {
   const user = useSelector(store => store.user);
   const item = useSelector(store => store.item);
+  const updateItem = useSelector(store => store.updateItem);
+
   const [toggleManageBtn, setToggleManageBtn] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -19,10 +21,20 @@ function HomeDashboard() {
     dispatch({type: 'DELETE_ITEM', payload: {id, user_id}});
     alert(`Item with id ${id} was successfully deleted.`)
   }
-
-  const markItemComplete = (id, user_id) => {
-    dispatch({type: 'UPDATE_ITEM', payload: {id, user_id}});
-    alert(`Item with id ${id} was updated to "complete".`)
+  
+  const markItemComplete = (id, evt) => {
+    axios.put(`/api/item/${updateItem.id}`, updateItem)
+    .then(res => {
+      alert(`Item with id ${id} was updated to "complete".`)
+      dispatch({
+        type: 'UPDATE_ONCHANGE',
+        payload: {property: evt.target.name, value: evt.target.value}
+      });
+    })
+    .catch(err => {
+      alert(`Oops, Item with id ${id} failed to update.`);
+      console.log('Error on is_complete PUT:', err);
+    })
   }
 
   const renderHomeItems = () => {
@@ -52,7 +64,7 @@ function HomeDashboard() {
         return(
           <div key={entry.id}>
             <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
-            {entry.user_id === user.id && <button onClick={() => markItemComplete(entry.id, entry.user_id)}>☑️</button> }
+            {entry.user_id === user.id && <button onClick={(evt) => markItemComplete(entry.id, evt)}>☑️</button> }
             {entry.user_id === user.id && <button onClick={() => deleteHomeItem(entry.id, entry.user_id)}>❌</button>}
             </li>
           </div>
