@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
@@ -6,6 +6,7 @@ import {useHistory} from 'react-router-dom';
 function HomeDashboard() {
   const user = useSelector(store => store.user);
   const item = useSelector(store => store.item);
+  const [toggleManageBtn, setToggleManageBtn] = useState(true);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -14,10 +15,23 @@ function HomeDashboard() {
     dispatch({type: 'FETCH_ITEM'});
   }, []);
   
-  const deleteHomeItem = (id) => {
-    dispatch({type: 'DELETE_ITEM', payload: id});
+  const deleteHomeItem = (id, user_id) => {
+    dispatch({type: 'DELETE_ITEM', payload: {id, user_id}});
   }
 
+  const renderHomeItems = () => {
+    return (<>
+      {item.map(entry => {
+      return(
+        <div key={entry.id}>
+          <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
+          </li>
+        </div>
+      );
+    })}
+    </>)
+  };
+  
   return (
     <>
     <div className="container">
@@ -26,17 +40,23 @@ function HomeDashboard() {
       
     </div>
     <h3>Your Active Home Items</h3>
-    <div>
-    {item.map(entry => {
-      return(
-        <div key={entry.id}>
-          <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}</li>
-        </div>
-      );
-    })}
+    <div> 
+      { toggleManageBtn ? renderHomeItems() : <>
+        {item.map(entry => {
+        return(
+          <div key={entry.id}>
+            <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
+            <button>☑️</button> <button>❌</button></li>
+          </div>
+        );
+      })}
+      </>} 
     </div>
     <div>
       <button className="btn" onClick={() => history.push('/add-item')}>Add Home Item</button>
+    </div>
+    <div>
+      <button className="btn" onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</button>
     </div>
     </>
   );

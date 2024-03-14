@@ -35,6 +35,7 @@ function* DeleteHomeItem(action) {
     const config = {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
+      data: {user_id: action.payload.user_id},
     };
   
     yield axios.delete(`/api/item/${action.payload.id}`, config);
