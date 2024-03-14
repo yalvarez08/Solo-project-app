@@ -56,13 +56,34 @@ router.post('/', rejectUnauthenticated, (req, res) => {
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
   console.log(`DELETE item ${req.params.id} from home_item db table`);
   if(req.body.user_id===req.user.id) {
-  const sqlText = `DELETE FROM "home_item" WHERE id =$1;`;
+  const sqlText = `DELETE FROM "home_item" WHERE id=$1;`;
     pool.query(sqlText, [req.params.id])
     .then(result => {
       res.sendStatus(201);
     })
     .catch(err => {
       console.log('Deleting item from db failed:', err);
+      res.sendStatus(500);
+    })
+  } else {
+    res.sendStatus(403);
+  }
+});
+
+// PUT item; allow user to mark as completed
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  console.log(`UPDATE item ${req.params.id}. req.body:`, req.body);
+  if(req.body.user_id===req.user.id) {
+    const sqlText = `
+      UPDATE "home_item" SET "is_complete" = TRUE 
+      WHERE id = $1;`; 
+    pool.query(sqlText, [req.params.id, req.body.is_complete])
+    .then(result => {
+      console.log(`UPDATE item was successful: ${sqlText}`);
+      res.sendStatus(201)
+    })
+    .catch(err => {
+      console.log('Error with UPDATE item:', err)
       res.sendStatus(500);
     })
   } else {

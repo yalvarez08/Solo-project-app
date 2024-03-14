@@ -20,9 +20,10 @@ function HomeDashboard() {
     alert(`Item with id ${id} was successfully deleted.`)
   }
 
-  // const markItemComplete = () => {
-
-  // }
+  const markItemComplete = (id, user_id) => {
+    dispatch({type: 'UPDATE_ITEM', payload: {id, user_id}});
+    alert(`Item with id ${id} was updated to "complete".`)
+  }
 
   const renderHomeItems = () => {
     return (<>
@@ -51,7 +52,7 @@ function HomeDashboard() {
         return(
           <div key={entry.id}>
             <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
-            <button>☑️</button> 
+            {entry.user_id === user.id && <button onClick={() => markItemComplete(entry.id, entry.user_id)}>☑️</button> }
             {entry.user_id === user.id && <button onClick={() => deleteHomeItem(entry.id, entry.user_id)}>❌</button>}
             </li>
           </div>
