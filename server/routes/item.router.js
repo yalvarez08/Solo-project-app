@@ -5,10 +5,12 @@ const {
   rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-// GET route to get items from db
+// GET route to get items for logged in user from db
 router.get('/', (req, res) => {
-  const sqlText = `SELECT * FROM "home_item"`;
-    pool.query(sqlText)
+  const sqlText = `
+    SELECT * FROM "home_item" WHERE "user_id" = $1;
+    `;
+    pool.query(sqlText, [req.user.id])
     .then(result => {
       res.send(result.rows);
     })
@@ -23,7 +25,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   console.log('req.params.id selected item:', id);
   const sqlText = `
-      SELECT home_item.name, home_item.re_date, home_item.location, home_item.priority_level FROM "home_item"
+      SELECT home_item.name, home_item.re_date, home_item.location, home_item.priority_level, home_item.id FROM "home_item"
       WHERE home_item.id = $1;`;
     pool.query(sqlText, [id])
     .then(result => {
@@ -72,6 +74,8 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 
 // PUT item; allow user to update item details
 router.put('/:id', rejectUnauthenticated, (req, res) => {
+  console.log('reqbody', req.body);
+  console.log('req.params', req.params);
   const sqlText= `
     UPDATE "home_item" SET "name"=$2, "priority_level"=$3, "location"=$4, "re_date"=$5
     WHERE id=$1;`;

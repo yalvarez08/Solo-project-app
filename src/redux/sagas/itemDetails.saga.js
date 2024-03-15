@@ -8,7 +8,7 @@ function* fetchItemDetails(action) {
         withCredentials: true,
       };
       const detailsResponse = yield axios.get(`/api/item/${action.payload}`, config);
-      yield put({ type: 'SET_ITEM_DETAILS', payload: detailsResponse.data });
+      yield put({ type: 'SET_ITEM_DETAILS', payload: detailsResponse.data[0] });
     } catch (err) {
       console.log('fetchItemDetails failed.', err);
     }

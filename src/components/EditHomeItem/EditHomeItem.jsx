@@ -12,15 +12,16 @@ function EditHomeItem() {
     const updateItem = useSelector(store => store.updateItem);
 
 
-    const handleChange = (evt) => {
+    const handleChange = (evt, key) => {
         dispatch({
             type: 'UPDATE_ONCHANGE',
-            payload: {property: evt.target.name, value: evt.target.value}
+            payload: {property: key, value: evt.target.value}
         });
     }
 
     const handleSaveChanges = (evt) => {
         evt.preventDefault();
+        console.log(updateItem);
         axios.put(`/api/item/${updateItem.id}`, updateItem) //👈❗️issue here❗️
         .then(res => {
             dispatch({type: 'CLEAR_UPDATE'})
@@ -40,27 +41,24 @@ function EditHomeItem() {
         <form className="update-form" onSubmit={handleSaveChanges}>
           <input
             type="text"
-            name="item_name"
             required
             value={updateItem.name}
             placeholder="item name"
-            onChange={(evt) => handleChange(evt)}
+            onChange={(evt) => handleChange(evt, 'name')}
           />
           <input
             type="number"
-            name="priority_lvl"
             required
             value={updateItem.priority_level}
             placeholder="priority level"
-            onChange={(evt) => handleChange(evt)}
+            onChange={(evt) => handleChange(evt, 'priority_level')}
           />
           <input
             type="text"
-            name="location"
             required
             value={updateItem.location}
             placeholder="location"
-            onChange={(evt) => handleChange(evt)}
+            onChange={(evt) => handleChange(evt, 'location')}
           />
           <Datetime
             type="date"

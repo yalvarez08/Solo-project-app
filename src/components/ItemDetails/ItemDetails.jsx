@@ -12,26 +12,13 @@ function ItemDetails() {
   useEffect(() => {
     dispatch({type: 'FETCH_ITEM_DETAILS', payload: id});
   }, []);
-
+// console.log('rendering item details:', itemDetails);
+  
   const handleEditClick = () => {
     dispatch({type: 'SET_UPDATE', payload: itemDetails});
     history.push(`/edit-item/${id}`)
   }
 
-  const renderDetails = () => {
-   if(itemDetails.length > 0) {
-    return (
-      <>
-      <h2>{itemDetails[0].name}</h2>
-      <img width={50} height={50} src={"/home-placeholder.jpeg"} />
-      <p>Priority level: {itemDetails[0].priority_level}</p>
-      <p>{itemDetails[0].location}</p>
-      <p>{itemDetails[0].re_date}</p>
-      </>
-    )
-  } else {
-    return <h3>No details at this time. Try again later.</h3>
-  }}
 
   return (
     <>
@@ -40,7 +27,11 @@ function ItemDetails() {
       <button onClick={() => history.push('/user')}>Back to dashboard</button>
     </div>
     <div>
-      {renderDetails()}
+      <h2>{itemDetails.name}</h2>
+      <img width={50} height={50} src={"/home-placeholder.jpeg"} />
+      <p>Priority level: {itemDetails.priority_level}</p>
+      <p>{itemDetails.location}</p>
+      <p>{itemDetails.re_date}</p>
     </div>
     <button onClick={handleEditClick}>Edit Item</button>
     </>

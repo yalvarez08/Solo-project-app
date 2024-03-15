@@ -1,4 +1,4 @@
-const itemDetails = (state = [], action) => {
+const itemDetails = (state = {}, action) => {
     switch (action.type) {
       case 'SET_ITEM_DETAILS':
         return action.payload;

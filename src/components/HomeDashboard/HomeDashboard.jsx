@@ -23,6 +23,7 @@ function HomeDashboard() {
   }
   
   const markItemComplete = (id, evt) => {
+    console.log('updateItem is:', updateItem);
     axios.put(`/api/item/${updateItem.id}`, updateItem)
     .then(res => {
       alert(`Item with id ${id} was updated to "complete".`)
