@@ -11,9 +11,6 @@ function EditHomeItem() {
     const [replaceDate, setReplaceDate] = useState(new Date());
     const updateItem = useSelector(store => store.updateItem);
 
-    // useEffect(() => {
-    //     dispatch({type: 'FETCH_ITEM_DETAILS', payload: id});
-    //   }, []);
 
     const handleChange = (evt) => {
         dispatch({
@@ -24,7 +21,7 @@ function EditHomeItem() {
 
     const handleSaveChanges = (evt) => {
         evt.preventDefault();
-        axios.put(`/api/item/${updateItem.id}`, updateItem)
+        axios.put(`/api/item/${updateItem.id}`, updateItem) //👈❗️issue here❗️
         .then(res => {
             dispatch({type: 'CLEAR_UPDATE'})
             history.push('/user'); //redirect back to user dashboard

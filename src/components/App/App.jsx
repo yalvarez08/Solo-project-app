@@ -13,6 +13,7 @@ import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
+import SideNav from '../SideNav/SideNav';
 import HomeDashboard from '../HomeDashboard/HomeDashboard';
 import ItemDetails from '../ItemDetails/ItemDetails';
 import AddHomeItem from '../AddHomeItem/AddHomeItem';
@@ -35,6 +36,7 @@ function App() {
   return (
     <Router>
       <div>
+        <SideNav />
         <Nav />
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
