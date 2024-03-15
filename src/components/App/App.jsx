@@ -18,6 +18,8 @@ import HomeDashboard from '../HomeDashboard/HomeDashboard';
 import ItemDetails from '../ItemDetails/ItemDetails';
 import AddHomeItem from '../AddHomeItem/AddHomeItem';
 import EditHomeItem from '../EditHomeItem/EditHomeItem';
+import Reminders from '../Reminders/Reminders';
+import Calendar from '../Calendar/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -36,8 +38,8 @@ function App() {
   return (
     <Router>
       <div>
-        <SideNav />
         <Nav />
+        <SideNav />
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
           <Redirect exact from="/" to="/home" />
@@ -123,6 +125,18 @@ function App() {
           exact 
           path="/edit-item/:id">
             <EditHomeItem />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/reminders">
+              <Reminders />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/calendar">
+              <Calendar />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
