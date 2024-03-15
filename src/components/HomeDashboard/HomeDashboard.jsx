@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import { Button } from 'semantic-ui-react';
 
 function HomeDashboard() {
   const user = useSelector(store => store.user);
@@ -73,8 +74,8 @@ function HomeDashboard() {
       </>} 
     </div>
     <div>
-      <button className="btn" onClick={() => history.push('/add-item')}>Add Home Item</button>
-      <button className="btn" onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</button>
+      <Button primary onClick={() => history.push('/add-item')}>Add Home Item</Button>
+      <Button secondary onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</Button>
     </div>
     </>
   );
