@@ -35,16 +35,6 @@ function SideNav() {
         <Link className="link-title" to="/reminders">
             <h2>Reminders</h2>
         </Link>
-            {/* <ul>
-            {sideNavContent.map((val, key) => {
-                return (
-                    <li key={key} 
-                    onClick={() => {window.location.pathname = val.link}}> 
-                    <div>{val.title}</div>
-                    </li>
-                )
-            })}
-            </ul> */}
         </div>
         </>
     )
