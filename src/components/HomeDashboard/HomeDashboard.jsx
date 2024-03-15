@@ -22,15 +22,14 @@ function HomeDashboard() {
     alert(`Item with id ${id} was successfully deleted.`)
   }
   
-  const markItemComplete = (id, evt) => {
-    console.log('updateItem is:', updateItem);
-    axios.put(`/api/item/${updateItem.id}`, updateItem)
+  const markItemComplete = (id) => { //👈bug here: still needs work 
+    console.log('item is:', item);
+    
+    axios.put(`/api/item/complete/${item.id}`, item)
     .then(res => {
+      // console.log('updateItem:', updateItem);
       alert(`Item with id ${id} was updated to "complete".`)
-      dispatch({
-        type: 'UPDATE_ONCHANGE',
-        payload: {property: evt.target.name, value: evt.target.value}
-      });
+      dispatch({type: 'SET_UPDATE', payload: updateItem});
     })
     .catch(err => {
       alert(`Oops, Item with id ${id} failed to update.`);
@@ -65,7 +64,7 @@ function HomeDashboard() {
         return(
           <div key={entry.id}>
             <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
-            {entry.user_id === user.id && <button onClick={(evt) => markItemComplete(entry.id, evt)}>☑️</button> }
+            {entry.user_id === user.id && <button onClick={() => markItemComplete(entry.id, entry.user_id)}>☑️</button> }
             {entry.user_id === user.id && <button onClick={() => deleteHomeItem(entry.id, entry.user_id)}>❌</button>}
             </li>
           </div>

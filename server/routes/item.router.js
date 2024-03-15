@@ -25,7 +25,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
   const id = req.params.id;
   console.log('req.params.id selected item:', id);
   const sqlText = `
-      SELECT home_item.name, home_item.re_date, home_item.location, home_item.priority_level, home_item.id FROM "home_item"
+      SELECT home_item.name, home_item.re_date, home_item.location, home_item.priority_level, home_item.id, home_item.is_complete FROM "home_item"
       WHERE home_item.id = $1;`;
     pool.query(sqlText, [id])
     .then(result => {
@@ -92,24 +92,20 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
 });
 
 // PUT item; allow user to mark as completed
-router.put('/:id', rejectUnauthenticated, (req, res) => {
+router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
   console.log(`UPDATE item ${req.params.id}. req.body:`, req.body);
-  if(req.body.user_id===req.user.id) {
     const sqlText = `
       UPDATE "home_item" SET "is_complete" = TRUE 
       WHERE id = $1;`; 
     pool.query(sqlText, [req.params.id, req.body.is_complete])
     .then(result => {
-      console.log(`UPDATE item was successful: ${sqlText}`);
+      console.log('UPDATE item to complete was successful:', sqlText);
       res.sendStatus(201)
     })
     .catch(err => {
       console.log('Error with UPDATE item:', err)
       res.sendStatus(500);
     })
-  } else {
-    res.sendStatus(403);
-  }
 });
 
 module.exports = router;

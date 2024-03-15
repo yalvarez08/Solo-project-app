@@ -22,7 +22,7 @@ function EditHomeItem() {
     const handleSaveChanges = (evt) => {
         evt.preventDefault();
         console.log(updateItem);
-        axios.put(`/api/item/${updateItem.id}`, updateItem) //👈❗️issue here❗️
+        axios.put(`/api/item/${updateItem.id}`, updateItem) 
         .then(res => {
             dispatch({type: 'CLEAR_UPDATE'})
             history.push('/user'); //redirect back to user dashboard
