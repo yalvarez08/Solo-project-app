@@ -70,6 +70,23 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   }
 });
 
+// PUT item; allow user to update item details
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+  const sqlText= `
+    UPDATE "home_item" SET "name"=$1, "re_date"=$2, "location"=$3, "priority_level"=$4
+    WHERE id=$5;`;
+  
+  const putValues = [req.params.id, req.body.name, req.body.re_date, req.body.location, req.body.priority_level]
+  pool.query(sqlText, putValues)
+    .then(result => {
+      res.sendStatus(201);
+    })
+    .catch(err => {
+      console.log('Error with UPDATE item details:', err);
+      res.sendStatus(500);
+    })
+});
+
 // PUT item; allow user to mark as completed
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log(`UPDATE item ${req.params.id}. req.body:`, req.body);
