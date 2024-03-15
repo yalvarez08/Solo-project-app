@@ -73,10 +73,10 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
 // PUT item; allow user to update item details
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   const sqlText= `
-    UPDATE "home_item" SET "name"=$1, "re_date"=$2, "location"=$3, "priority_level"=$4
-    WHERE id=$5;`;
+    UPDATE "home_item" SET "name"=$2, "priority_level"=$3, "location"=$4, "re_date"=$5
+    WHERE id=$1;`;
   
-  const putValues = [req.params.id, req.body.name, req.body.re_date, req.body.location, req.body.priority_level]
+  const putValues = [req.params.id, req.body.name, req.body.priority_level, req.body.location, req.body.re_date]
   pool.query(sqlText, putValues)
     .then(result => {
       res.sendStatus(201);

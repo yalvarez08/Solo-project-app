@@ -1,20 +1,21 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
-import {useHistory, useParams} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import Datetime from 'react-datetime';
 
 
 function EditHomeItem() {
     const dispatch = useDispatch();
     const history = useHistory();
-    const {id} = useParams();
+    const [replaceDate, setReplaceDate] = useState(new Date());
     const updateItem = useSelector(store => store.updateItem);
 
     // useEffect(() => {
     //     dispatch({type: 'FETCH_ITEM_DETAILS', payload: id});
     //   }, []);
 
-    const handleChange = (evt, key) => {
+    const handleChange = (evt) => {
         dispatch({
             type: 'UPDATE_ONCHANGE',
             payload: {property: evt.target.name, value: evt.target.value}
@@ -49,7 +50,7 @@ function EditHomeItem() {
             onChange={(evt) => handleChange(evt)}
           />
           <input
-            type="text"
+            type="number"
             name="priority_lvl"
             required
             value={updateItem.priority_level}
@@ -64,13 +65,12 @@ function EditHomeItem() {
             placeholder="location"
             onChange={(evt) => handleChange(evt)}
           />
-          <input
+          <Datetime
             type="date"
             name="re_date"
             required
-            value={updateItem.re_date}
-            placeholder="date of repair/replacement"
-            onChange={(evt) => handleChange(evt)}
+            value={replaceDate}
+            onChange={(date) => setReplaceDate(date)}
           />
           <button type="submit">Save changes</button>
         </form>
