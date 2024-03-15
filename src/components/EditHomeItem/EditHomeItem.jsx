@@ -10,10 +10,14 @@ function EditHomeItem() {
     const {id} = useParams();
     const updateItem = useSelector(store => store.updateItem);
 
+    // useEffect(() => {
+    //     dispatch({type: 'FETCH_ITEM_DETAILS', payload: id});
+    //   }, []);
+
     const handleChange = (evt, key) => {
         dispatch({
             type: 'UPDATE_ONCHANGE',
-            payload: {property: key, value: evt.target.value}
+            payload: {property: evt.target.name, value: evt.target.value}
         });
     }
 
@@ -41,28 +45,32 @@ function EditHomeItem() {
             name="item_name"
             required
             value={updateItem.name}
-            onChange={(evt) => handleChange(evt, 'name')}
+            placeholder="item name"
+            onChange={(evt) => handleChange(evt)}
           />
           <input
             type="text"
             name="priority_lvl"
             required
             value={updateItem.priority_level}
-            onChange={(evt) => handleChange(evt, 'priority_level')}
+            placeholder="priority level"
+            onChange={(evt) => handleChange(evt)}
           />
           <input
             type="text"
             name="location"
             required
             value={updateItem.location}
-            onChange={(evt) => handleChange(evt, 'location')}
+            placeholder="location"
+            onChange={(evt) => handleChange(evt)}
           />
           <input
-            type="text"
+            type="date"
             name="re_date"
             required
             value={updateItem.re_date}
-            onChange={(evt) => handleChange(evt, 're_date')}
+            placeholder="date of repair/replacement"
+            onChange={(evt) => handleChange(evt)}
           />
           <button type="submit">Save changes</button>
         </form>

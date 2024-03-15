@@ -16,6 +16,7 @@ import AboutPage from '../AboutPage/AboutPage';
 import HomeDashboard from '../HomeDashboard/HomeDashboard';
 import ItemDetails from '../ItemDetails/ItemDetails';
 import AddHomeItem from '../AddHomeItem/AddHomeItem';
+import EditHomeItem from '../EditHomeItem/EditHomeItem';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
@@ -115,6 +116,12 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          <ProtectedRoute
+          exact 
+          path="/edit-item/:id">
+            <EditHomeItem />
+          </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

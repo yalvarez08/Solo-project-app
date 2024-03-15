@@ -8,9 +8,15 @@ function ItemDetails() {
   const history = useHistory();
   const itemDetails = useSelector(store => store.itemDetails);
 
+
   useEffect(() => {
     dispatch({type: 'FETCH_ITEM_DETAILS', payload: id});
   }, []);
+
+  const handleEditClick = () => {
+    dispatch({type: 'SET_UPDATE', payload: itemDetails});
+    history.push(`/edit-item/${id}`)
+  }
 
   const renderDetails = () => {
    if(itemDetails.length > 0) {
@@ -36,6 +42,7 @@ function ItemDetails() {
     <div>
       {renderDetails()}
     </div>
+    <button onClick={handleEditClick}>Edit Item</button>
     </>
   );
 }
