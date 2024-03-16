@@ -4,7 +4,13 @@ import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import {
+  ListItem,
+  ListHeader,
+  ListContent,
+  Image,
+  List,
+} from 'semantic-ui-react';
 import './HomeDashboard.css';
 
 function HomeDashboard() {
@@ -43,16 +49,27 @@ function HomeDashboard() {
 
   const renderHomeItems = () => {
     return (<>
+    <List divided verticalAlign="middle">
       {item.map(entry => {
       return(
-        <div key={entry.id}>
-          <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
+        <ListItem key={entry.id}>
+          <li key={entry.id}> <Image width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
+          <ListContent>
+            <ListHeader>{entry.name} priority level: {entry.priority_level}</ListHeader>
+            </ListContent> 
           </li>
-        </div>
+        </ListItem>
       );
       })}
+    </List>
     </>)
   };
+  // {item.map(entry => {
+  //   return(
+  //     <div key={entry.id}>
+  //       <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
+  //       </li>
+  //     </div>
   
   return (
     <>
@@ -62,28 +79,28 @@ function HomeDashboard() {
       <AppHeader />
       <div className="home-content">
         <h2>Welcome, {user.f_name}!</h2>
-        <p>Your ID is: {user.id}</p>
-      
+        
+        <div>
+          <button className="home-btns" onClick={() => history.push('/add-item')}>Add Home Item</button>
+          <button className="home-btns" onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</button>
+        </div>
     
         <h3>Your Active Home Items</h3>
-      <div> 
-      { toggleManageBtn ? renderHomeItems() : <>
-        {item.map(entry => {
-        return(
-          <div key={entry.id}>
-            <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
-            {entry.user_id === user.id && <button onClick={() => markItemComplete(entry.id, entry.user_id)}>☑️</button> }
-            {entry.user_id === user.id && <button onClick={() => deleteHomeItem(entry.id, entry.user_id)}>❌</button>}
-            </li>
-          </div>
-        );
-      })}
-      </>} 
-      </div>
-        <div>
-          <Button primary onClick={() => history.push('/add-item')}>Add Home Item</Button>
-          <Button secondary onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</Button>
+        <div> 
+        { toggleManageBtn ? renderHomeItems() : <>
+          {item.map(entry => {
+            return(
+              <div key={entry.id}>
+                <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
+                {entry.user_id === user.id && <button onClick={() => markItemComplete(entry.id, entry.user_id)}>☑️</button> }
+                {entry.user_id === user.id && <button onClick={() => deleteHomeItem(entry.id, entry.user_id)}>❌</button>}
+                </li>
+              </div>
+            );
+          })}
+        </>} 
         </div>
+      
       </div>
       </div>
     </div>
