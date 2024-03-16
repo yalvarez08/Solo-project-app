@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import SideNav from '../SideNav/SideNav';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
+import './HomeDashboard.css';
 
 function HomeDashboard() {
   const user = useSelector(store => store.user);
@@ -53,13 +55,15 @@ function HomeDashboard() {
   
   return (
     <>
-    <div className="container">
+    <div className="dashboard">
+      <SideNav />
+      <div className="home-container">
       <h2>Welcome, {user.f_name}!</h2>
       <p>Your ID is: {user.id}</p>
       
-    </div>
+    
     <h3>Your Active Home Items</h3>
-    <div> 
+      <div> 
       { toggleManageBtn ? renderHomeItems() : <>
         {item.map(entry => {
         return(
@@ -72,10 +76,12 @@ function HomeDashboard() {
         );
       })}
       </>} 
-    </div>
-    <div>
-      <Button primary onClick={() => history.push('/add-item')}>Add Home Item</Button>
-      <Button secondary onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</Button>
+      </div>
+      <div>
+        <Button primary onClick={() => history.push('/add-item')}>Add Home Item</Button>
+        <Button secondary onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</Button>
+      </div>
+      </div>
     </div>
     </>
   );

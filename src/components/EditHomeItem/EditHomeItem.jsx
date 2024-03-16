@@ -25,7 +25,7 @@ function EditHomeItem() {
         axios.put(`/api/item/${updateItem.id}`, updateItem) 
         .then(res => {
             dispatch({type: 'CLEAR_UPDATE'})
-            history.push('/user'); //redirect back to user dashboard
+            history.push('/dashboard'); //redirect back to user dashboard
         })
         .catch(err => {
             console.log('Error with updating home item info:', err);
@@ -36,7 +36,7 @@ function EditHomeItem() {
         <>
         <div className="container">
           <h2>Edit Item</h2>
-          <button onClick={() => history.push('/user')}>Back to dashboard</button>
+          <button onClick={() => history.push('/dashboard')}>Back to dashboard</button>
         </div>
         <form className="update-form" onSubmit={handleSaveChanges}>
           <input

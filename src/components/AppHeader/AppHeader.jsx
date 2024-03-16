@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+import './AppHeader.css';
 import { useSelector } from 'react-redux';
+import {Segment, Header} from 'semantic-ui-react';
 
-function Nav() {
+function AppHeader() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
+    <Segment basic inverted padded='very'>
       <Link to="/home">
-        <h2 className="nav-title">Casalogue</h2>
+        <Header size='huge' floated='left' color='grey' >Casalogue</Header>
       </Link>
       <div>
         {/* If no user is logged in, show these links */}
@@ -24,7 +25,7 @@ function Nav() {
         {/* If a user is logged in, show these links */}
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
+            <Link className="navLink" to="/dashboard">
               Home
             </Link>
 
@@ -36,8 +37,8 @@ function Nav() {
           About
         </Link>
       </div>
-    </div>
+    </Segment>
   );
 }
 
-export default Nav;
+export default AppHeader;

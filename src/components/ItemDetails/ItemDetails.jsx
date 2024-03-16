@@ -24,7 +24,7 @@ function ItemDetails() {
     <>
     <div className="container">
       <h2>Item Details</h2>
-      <button onClick={() => history.push('/user')}>Back to dashboard</button>
+      <button onClick={() => history.push('/dashboard')}>Back to dashboard</button>
     </div>
     <div>
       <h2>{itemDetails.name}</h2>

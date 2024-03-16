@@ -8,12 +8,11 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import Nav from '../Nav/Nav';
+import AppHeader from '../AppHeader/AppHeader';
 import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import AboutPage from '../AboutPage/AboutPage';
-import SideNav from '../SideNav/SideNav';
 import HomeDashboard from '../HomeDashboard/HomeDashboard';
 import ItemDetails from '../ItemDetails/ItemDetails';
 import AddHomeItem from '../AddHomeItem/AddHomeItem';
@@ -38,15 +37,13 @@ function App() {
   return (
     <Router>
       <div>
-        <Nav />
-        <SideNav />
+        <AppHeader />
+        
         <Switch>
-          {/* Visiting localhost:5173 will redirect to localhost:5173/home */}
-          <Redirect exact from="/" to="/home" />
+          {/* Visiting localhost:5173 will redirect to localhost:5173/dashboard */}
+          <Redirect exact from="/" to="/dashboard" />
 
-          {/* Visiting localhost:5173/about will show the about page. */}
           <Route
-            // shows AboutPage at all times (logged in or not)
             exact
             path="/about"
           >
@@ -60,13 +57,12 @@ function App() {
           <ProtectedRoute
             // logged in shows HomeDashboard else shows LoginPage
             exact
-            path="/user"
+            path="/dashboard"
           >
             <HomeDashboard />
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows ItemDetails else shows LoginPage
             exact
             path="/item-details/:id"
           >
@@ -84,11 +80,8 @@ function App() {
             path="/login"
           >
             {user.id ?
-              // If the user is already logged in, 
-              // redirect to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/dashboard" />
               :
-              // Otherwise, show the login page
               <LoginPage />
             }
           </Route>
@@ -98,11 +91,8 @@ function App() {
             path="/registration"
           >
             {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/dashboard" />
               :
-              // Otherwise, show the registration page
               <RegisterPage />
             }
           </Route>
@@ -112,11 +102,8 @@ function App() {
             path="/home"
           >
             {user.id ?
-              // If the user is already logged in, 
-              // redirect them to the /user page
-              <Redirect to="/user" />
+              <Redirect to="/dashboard" />
               :
-              // Otherwise, show the Landing page
               <LandingPage />
             }
           </Route>
@@ -125,18 +112,6 @@ function App() {
           exact 
           path="/edit-item/:id">
             <EditHomeItem />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            exact
-            path="/reminders">
-              <Reminders />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            exact
-            path="/calendar">
-              <Calendar />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

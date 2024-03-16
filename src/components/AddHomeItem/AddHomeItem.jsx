@@ -25,7 +25,7 @@ function AddHomeItem() {
             priority_level: priorityLvl,
         },
         });
-        history.push('/user');
+        history.push('/dashboard');
     };
 
     return (
