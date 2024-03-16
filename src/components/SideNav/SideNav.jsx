@@ -1,16 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
-import {
-    SidebarPusher,
-    SidebarPushable,
-    MenuItem,
-    Header,
-    Icon,
-    Image,
-    Menu,
-    Segment,
-    Sidebar,
-  } from 'semantic-ui-react';
+import { Icon, IconGroup} from 'semantic-ui-react';
 import './SideNav.css';
 
 
@@ -21,24 +11,31 @@ function SideNav() {
             <div className='top'>
                 <span className='logo'>Casalogue</span>
             </div>
+            <hr />
             <div className='center'>
                 <ul>
                     <li>
+                        <Icon name='dashboard' size='large' /> 
                         <span>Dashboard</span>
                     </li>
-                </ul>
-                <ul>
                     <li>
+                        <Icon name='calendar alternate' size='large' />
                         <span>Calendar</span>
                     </li>
-                </ul>
-                <ul>
                     <li>
+                        <Icon name='bell outline' size='large' />
                         <span>Reminders</span>
+                    </li>
+                    <li>
+                        <Icon name='log out' size='large' />
+                        <span>Logout</span>
                     </li>
                 </ul>
                 </div>
-            <div className='bottom'>color options</div>
+            <div className='bottom'>
+                <div className='themeOption'></div>
+                <div className='themeOption'></div>
+            </div>
         </div>
     </>)
 }
