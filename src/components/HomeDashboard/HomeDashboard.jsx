@@ -60,6 +60,7 @@ function HomeDashboard() {
       <SideNav />
       <div className="home-container">
       <AppHeader />
+      <div className="home-content">
         <h2>Welcome, {user.f_name}!</h2>
         <p>Your ID is: {user.id}</p>
       
@@ -79,9 +80,10 @@ function HomeDashboard() {
       })}
       </>} 
       </div>
-      <div>
-        <Button primary onClick={() => history.push('/add-item')}>Add Home Item</Button>
-        <Button secondary onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</Button>
+        <div>
+          <Button primary onClick={() => history.push('/add-item')}>Add Home Item</Button>
+          <Button secondary onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</Button>
+        </div>
       </div>
       </div>
     </div>
