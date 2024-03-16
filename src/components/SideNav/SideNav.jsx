@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter as Router, Route, Link} from 'react-router-dom';
-import { Icon, IconGroup} from 'semantic-ui-react';
+import { Icon } from 'semantic-ui-react';
 import './SideNav.css';
 
 
@@ -16,7 +16,7 @@ function SideNav() {
                 <ul>
                     <li>
                         <Icon name='dashboard' size='large' /> 
-                        <span>Dashboard</span>
+                            <span>Dashboard</span>
                     </li>
                     <li>
                         <Icon name='calendar alternate' size='large' />

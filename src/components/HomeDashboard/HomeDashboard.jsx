@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
@@ -58,11 +59,12 @@ function HomeDashboard() {
     <div className="dashboard">
       <SideNav />
       <div className="home-container">
-      <h2>Welcome, {user.f_name}!</h2>
-      <p>Your ID is: {user.id}</p>
+      <AppHeader />
+        <h2>Welcome, {user.f_name}!</h2>
+        <p>Your ID is: {user.id}</p>
       
     
-    <h3>Your Active Home Items</h3>
+        <h3>Your Active Home Items</h3>
       <div> 
       { toggleManageBtn ? renderHomeItems() : <>
         {item.map(entry => {

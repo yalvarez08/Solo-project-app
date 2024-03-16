@@ -37,8 +37,6 @@ function App() {
   return (
     <Router>
       <div>
-        <AppHeader />
-        
         <Switch>
           {/* Visiting localhost:5173 will redirect to localhost:5173/dashboard */}
           <Redirect exact from="/" to="/dashboard" />
