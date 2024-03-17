@@ -7,7 +7,7 @@ function ActionButtons({name, onClick}) {
     return(
         <div className='action-btns'>
             <div>
-                <button className='left' onClick={onClick}>{name}</button>
+                <button onClick={onClick}>{name}</button>
             </div>
         </div>
     )

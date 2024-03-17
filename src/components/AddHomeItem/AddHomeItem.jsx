@@ -39,27 +39,30 @@ function AddHomeItem() {
             <AppHeader />
             <div className="add-content">
                 <h2>Add Item</h2>
-                <h4>Enter information about your task below and it will be added to your list of maintenance items.</h4>
-                <form className="addItemForm" onSubmit={submitItem}>
-                    <div>
-                        <label htmlFor="name">Item name:</label>
-                        <input value={itemName} required onChange={evt => setItemName(evt.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="re_date">Date of repair/replacement:</label>
-                        <Datetime value={replaceDate} onChange={date => setReplaceDate(date)} />
-                    </div>
-                    <div>
-                        <label htmlFor="location">Location:</label>
-                        <input value={location} required onChange={evt => setLocation(evt.target.value)} />
-                    </div>
-                    <div>
-                        <label htmlFor="priority">Priority Level:</label>
-                        <input value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)} />
-                    </div>
-
-                    <button className="btn" type="submit">Save & Add Item</button>
-                </form>
+            </div>
+                <div className="form-content">
+                    <h4>Enter information about your task below and it will be added to your list of maintenance items.</h4>
+                    <form onSubmit={submitItem}>
+                        <div className="form-input">
+                            <label htmlFor="name">Item name:</label>
+                            <input value={itemName} required onChange={evt => setItemName(evt.target.value)} />
+                        </div>
+                        <div className="form-input">
+                            <label htmlFor="location">Location:</label>
+                            <input value={location} required onChange={evt => setLocation(evt.target.value)} />
+                        </div>
+                        <div className="form-input">
+                            <label htmlFor="priority">Priority Level:</label>
+                            <input type="number" value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)} />
+                        </div>
+                        <div>
+                            <label htmlFor="re_date">Date of repair/replacement:</label>
+                            <Datetime value={replaceDate} onChange={date => setReplaceDate(date)} />
+                        </div>
+                        <div>
+                        <button type="submit">Save & Add Item</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
