@@ -4,7 +4,7 @@ import SideNav from '../SideNav/SideNav';
 import ActionButtons from '../ActionButtons/ActionButtons';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
-import { Icon } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react';
 import './ItemDetails.css';
 
 function ItemDetails() {

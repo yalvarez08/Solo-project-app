@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.edit-view {
+    display: flex;
+}
+
+.edit-container {
+    flex: 5;
+    padding-top: 10px;
+
+    .edit-title {
+        padding: 30px;
+        padding-left: 50px;
+        box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        flex-wrap: wrap;
+        font-family: "Prompt", sans-serif;
+    }
+
+    .edit-content, .edit-form {
+        padding: 30px;
+        padding-left: 50px;
+        box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        flex-wrap: wrap;
+        font-family: "Prompt", sans-serif;
+        font-weight: 500;
+    }
+    input {
+        font-family: "Prompt", sans-serif;
+    }
+}
