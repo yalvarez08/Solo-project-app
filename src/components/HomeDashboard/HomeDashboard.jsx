@@ -6,9 +6,11 @@ import ActionButtons from '../ActionButtons/ActionButtons';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {
+  Button,
   ListItem,
   ListHeader,
   ListContent,
+  Icon,
   Image,
   List,
 } from 'semantic-ui-react';
@@ -50,27 +52,25 @@ function HomeDashboard() {
 
   const renderHomeItems = () => {
     return (<>
-    <List divided verticalAlign="middle">
+    <List relaxed divided verticalAlign="middle" size="big">
       {item.map(entry => {
       return(
         <ListItem key={entry.id}>
-          <li key={entry.id}> <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
           <ListContent>
-            <ListHeader>{entry.name} priority level: {entry.priority_level}</ListHeader>
-            </ListContent> 
-          </li>
+              <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
+              {entry.name} priority level: {entry.priority_level}
+          </ListContent>
         </ListItem>
       );
       })}
     </List>
     </>)
   };
-  // {item.map(entry => {
-  //   return(
-  //     <div key={entry.id}>
-  //       <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
-  //       </li>
-  //     </div>
+  // <li key={entry.id}> <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
+  //    <ListContent>
+  //       <ListHeader>{entry.name} priority level: {entry.priority_level}</ListHeader>
+  //    </ListContent> 
+  // </li>
   
   return (
     <>
@@ -88,16 +88,22 @@ function HomeDashboard() {
         <h3>Your Active Home Items</h3>
         <div> 
         { toggleManageBtn ? renderHomeItems() : <>
+          <List relaxed divided verticalAlign="middle" size="big">
           {item.map(entry => {
             return(
-              <div key={entry.id}>
-                <li key={entry.id}> <img width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>{entry.name} priority level: {entry.priority_level}
-                {entry.user_id === user.id && <button onClick={() => markItemComplete(entry.id, entry.user_id)}>☑️</button> }
-                {entry.user_id === user.id && <button onClick={() => deleteHomeItem(entry.id, entry.user_id)}>❌</button>}
-                </li>
-              </div>
+              <ListItem key={entry.id}>
+                <ListContent>
+                <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
+                  {entry.name} priority level: {entry.priority_level}
+                </ListContent>
+                  <ListContent floated="right">
+                  {entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id, entry.user_id)}><Icon name="checkmark" /></Button>}
+                  {entry.user_id === user.id && <Button icon onClick={() => deleteHomeItem(entry.id, entry.user_id)}><Icon name="trash alternate outline" /></Button>}
+                  </ListContent>
+              </ListItem>
             );
           })}
+          </List>
         </>} 
         </div>
       

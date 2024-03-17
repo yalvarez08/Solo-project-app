@@ -3,7 +3,6 @@
 .details-view {
     display: flex;
 }
-
 .details-container {
     flex: 5;
     padding-top: 10px;
@@ -32,5 +31,8 @@
         padding-top: 30px;
         text-align: center;
     }
+}
+.icon{
+    cursor: pointer;
 }
 
