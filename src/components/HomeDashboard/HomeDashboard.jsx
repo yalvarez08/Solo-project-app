@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
+import ActionButtons from '../ActionButtons/ActionButtons';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {
@@ -53,7 +54,7 @@ function HomeDashboard() {
       {item.map(entry => {
       return(
         <ListItem key={entry.id}>
-          <li key={entry.id}> <Image width={50} height={50} src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
+          <li key={entry.id}> <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
           <ListContent>
             <ListHeader>{entry.name} priority level: {entry.priority_level}</ListHeader>
             </ListContent> 
@@ -79,12 +80,11 @@ function HomeDashboard() {
       <AppHeader />
       <div className="home-content">
         <h2>Welcome, {user.f_name}!</h2>
-        
-        <div>
-          <button className="home-btns" onClick={() => history.push('/add-item')}>Add Home Item</button>
-          <button className="home-btns" onClick={() => setToggleManageBtn(!toggleManageBtn)}>Manage Items</button>
+        <div className="home-btns">
+        <ActionButtons name="Add Home Item" onClick={() => history.push('/add-item')}/>
+        <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
         </div>
-    
+        
         <h3>Your Active Home Items</h3>
         <div> 
         { toggleManageBtn ? renderHomeItems() : <>

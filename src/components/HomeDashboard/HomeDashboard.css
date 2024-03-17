@@ -24,11 +24,14 @@ h3{
     }
 }
 .home-btns {
-    margin-right: 40px;
-    justify-content: right;
-    cursor: pointer;
+    display:flex;
+    padding: 20px;
+
 }
 li {
     list-style: none;
     padding-bottom: 10px;
+}
+.image {
+    cursor: pointer;
 }
