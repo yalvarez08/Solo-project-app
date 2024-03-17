@@ -36,10 +36,10 @@ function AddHomeItem() {
         <div className="add-view">
             <SideNav />
             <div className="add-container">
-            <AppHeader />
-            <div className="add-content">
-                <h2>Add Item</h2>
-            </div>
+                <AppHeader />
+                <div className="add-content">
+                    <h2>Add Item</h2>
+                </div>
                 <div className="form-content">
                     <h4>Enter information about your task below and it will be added to your list of maintenance items.</h4>
                     <form onSubmit={submitItem}>

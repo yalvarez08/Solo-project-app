@@ -5,9 +5,9 @@ import './ActionButtons.css';
 function ActionButtons({name, onClick}) {
 
     return(
-        <div className='action-btns'>
+        <div>
             <div>
-                <button onClick={onClick}>{name}</button>
+                <button className='action-btns' onClick={onClick}>{name}</button>
             </div>
         </div>
     )

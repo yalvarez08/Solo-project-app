@@ -4,7 +4,7 @@
     flex: 1;
     border-right: 0.5px solid rgb(225, 222, 222);
     min-height: 100vh;
-    background-color: whitesmoke;
+    background-color: #BFBDA3;
 }
 
 .top {
@@ -17,7 +17,7 @@
         font-size: 26px;
         font-family: "Prompt", sans-serif;
         font-weight: 400;
-        color: #6E7346;
+        color: #5f6244;
     }
 }
 
@@ -43,7 +43,7 @@ hr {
         cursor: pointer;
 
         &:hover {
-            background-color: #aeaeac;
+            background-color: #dddddd;
         }
     }
 
@@ -57,7 +57,7 @@ hr {
 }
 
 .icon {
-    color: #6E7346;
+    color: #5f6244;
 }
 
 .bottom {
@@ -65,7 +65,7 @@ hr {
     align-items: center;
     justify-content: center;
     margin: 10px;
-    position:relative;
+    position: relative;
 
     .themeOption {
         width: 20px;
@@ -78,6 +78,7 @@ hr {
         &:nth-child(1) {
             background-color: whitesmoke;
         }
+
         &:nth-child(2) {
             background-color: rgb(65, 64, 64);
         }

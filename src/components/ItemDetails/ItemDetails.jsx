@@ -1,6 +1,11 @@
 import React, {useEffect} from 'react';
+import AppHeader from '../AppHeader/AppHeader';
+import SideNav from '../SideNav/SideNav';
+import ActionButtons from '../ActionButtons/ActionButtons';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory, useParams} from 'react-router-dom';
+import { Icon } from 'semantic-ui-react'
+import './ItemDetails.css';
 
 function ItemDetails() {
   const dispatch = useDispatch();
@@ -22,18 +27,28 @@ function ItemDetails() {
 
   return (
     <>
-    <div className="container">
-      <h2>Item Details</h2>
-      <button onClick={() => history.push('/dashboard')}>Back to dashboard</button>
+    <div className="details-view">
+      <SideNav />
+        <div className="details-container">
+          <AppHeader />
+          <div className="details">
+            <h2>Item Details</h2>
+          </div>
+          <div className="details-content">
+            <Icon size="large" name="angle left" onClick={() => history.push('/dashboard')} /> <span>Back to dashboard</span>
+            <div className="edit">
+              <ActionButtons className="edit-btn" name="Edit Item 🖊️" onClick={handleEditClick} />
+            </div>
+            <div className="info">
+              <h2>{itemDetails.name}</h2>
+                <img width={50} height={50} src={"/home-placeholder.jpeg"} />
+                <p>Priority level: {itemDetails.priority_level}</p>
+                <p>{itemDetails.location}</p>
+                <p>{itemDetails.re_date}</p>
+            </div>
+          </div>
+        </div>
     </div>
-    <div>
-      <h2>{itemDetails.name}</h2>
-      <img width={50} height={50} src={"/home-placeholder.jpeg"} />
-      <p>Priority level: {itemDetails.priority_level}</p>
-      <p>{itemDetails.location}</p>
-      <p>{itemDetails.re_date}</p>
-    </div>
-    <button onClick={handleEditClick}>Edit Item</button>
     </>
   );
 }
