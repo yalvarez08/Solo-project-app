@@ -3,6 +3,8 @@ import axios from 'axios';
 import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
 import ActionButtons from '../ActionButtons/ActionButtons';
+import AddRemModal from '../AddRemModal/AddRemModal';
+import Swal from 'sweetalert2';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import {
@@ -31,14 +33,35 @@ function HomeDashboard() {
   }, []);
   
   const deleteHomeItem = (id, user_id) => {
-    dispatch({type: 'DELETE_ITEM', payload: {id, user_id}});
-    alert(`Item with id ${id} was successfully deleted.`)
-    // ❗️add confirmation module here❗️
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Your maintenance item will be permanently deleted from your list.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#6E7346",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!"
+    })
+    .then(result => {
+      if(result.isConfirmed) {
+        dispatch({type: 'DELETE_ITEM', payload: {id, user_id}});
+        Swal.fire({
+          title: "Deleted!",
+          text: `Maintenance item has been deleted.`,
+          icon: "success"
+        });
+      } else if(result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire({
+          title: "Cancelled",
+          text: "Your maintenance item is safe!",
+          icon: "error"
+        });
+      }})
   }
   
   const markItemComplete = (id) => { //👈bug here: still needs work ❗️
     console.log('item is:', item);
-    
     axios.put(`/api/item/complete/${item.id}`, item)
     .then(res => {
       // console.log('updateItem:', updateItem);
@@ -51,6 +74,13 @@ function HomeDashboard() {
     })
   }
 
+  // const AddReminder = () => {
+  //   return (
+  //   <AddRemModal trigger={<Button>Content</Button>} />
+  //   )
+  // }
+
+  // <Button icon onClick={() => AddReminder(entry.id, entry.user_id)}><Icon name="bell" /></Button>
   const renderHomeItems = () => {
     return (<>
     <List relaxed divided verticalAlign="middle" size="big">
@@ -67,11 +97,6 @@ function HomeDashboard() {
     </List>
     </>)
   };
-  // <li key={entry.id}> <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
-  //    <ListContent>
-  //       <ListHeader>{entry.name} priority level: {entry.priority_level}</ListHeader>
-  //    </ListContent> 
-  // </li>
   
   return (
     <>
@@ -100,6 +125,7 @@ function HomeDashboard() {
                   <ListContent floated="right">
                   {entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id, entry.user_id)}><Icon name="checkmark" /></Button>}
                   {entry.user_id === user.id && <Button icon onClick={() => deleteHomeItem(entry.id, entry.user_id)}><Icon name="trash alternate outline" /></Button>}
+                  {entry.user_id === user.id && <AddRemModal trigger={<Button>Content</Button>} />}
                   </ListContent>
               </ListItem>
             );
@@ -117,3 +143,10 @@ function HomeDashboard() {
 
 
 export default HomeDashboard;
+
+
+// <li key={entry.id}> <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
+  //    <ListContent>
+  //       <ListHeader>{entry.name} priority level: {entry.priority_level}</ListHeader>
+  //    </ListContent> 
+  // </li>

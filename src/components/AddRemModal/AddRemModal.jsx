@@ -5,8 +5,7 @@ import {
   ModalContent,
   ModalActions,
   Button,
-  Header,
-  Image,
+  Icon,
   Modal,
 } from 'semantic-ui-react';
 
@@ -18,26 +17,26 @@ function AddRemModal() {
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
-      trigger={<Button>Add Reminder?</Button>}
+      trigger={<Button icon><Icon name="bell" /></Button>}
     >
       <ModalHeader>Set Reminder</ModalHeader>
       <ModalContent>
         <ModalDescription>      
           <p>
-            Would you like to set a reminder...
+            Would you like to set a reminder for this maintenance item?
           </p>
         </ModalDescription>
       </ModalContent>
       <ModalActions>
         <Button color='black' onClick={() => setOpen(false)}>
-          Nope
+          No thanks.
         </Button>
         <Button
-          content="Yep, that's me"
+          content="Yes!"
           labelPosition='right'
           icon='checkmark'
+          color="olive"
           onClick={() => setOpen(false)}
-          positive
         />
       </ModalActions>
     </Modal>
@@ -46,4 +45,3 @@ function AddRemModal() {
 
 export default AddRemModal
 
-{/* <AddRemModal trigger={<Button>Content</Button>} /> */}
