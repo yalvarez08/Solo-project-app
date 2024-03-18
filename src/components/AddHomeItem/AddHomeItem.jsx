@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
 import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
+import ActionButtons from '../ActionButtons/ActionButtons';
 import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Datetime from 'react-datetime';
+import {
+    FormSelect,
+    FormField,
+    Checkbox,
+    Button,
+    ModalHeader,
+    ModalDescription,
+    ModalContent,
+    ModalActions,
+    Header,
+    Modal,
+} from 'semantic-ui-react';
 import './AddHomeItem.css';
 
 
@@ -13,6 +26,8 @@ function AddHomeItem() {
     const [replaceDate, setReplaceDate] = useState(new Date());
     const [location, setLocation] = useState('');
     const [priorityLvl, setPriorityLvl] = useState('');
+    const [open, setOpen] = useState(false);
+    const [reminder, setReminder] = useState('yes');
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -30,6 +45,37 @@ function AddHomeItem() {
         });
         history.push('/dashboard');
     };
+
+    const reminderModal = () => {
+  
+        return (
+            <Modal
+              onClose={() => setOpen(false)}
+              onOpen={() => setOpen(true)}
+              open={open}
+              trigger={<Button>Reminder?</Button>}
+            >
+            <ModalHeader>Set Reminder</ModalHeader>
+                <ModalContent>
+                    <ModalDescription>
+                    <p>Would you like to set a recurring reminder for this maintenance item?</p>
+                    </ModalDescription>  
+                </ModalContent>  
+            <ModalActions>
+                <Button color='black' onClick={() => setOpen(false)}>
+                No thanks.
+                </Button>
+                <Button
+                    content="Yes!"
+                    color='olive'
+                    labelPosition='right'
+                    icon='checkmark'
+                    onClick={() => setOpen(false)}
+                />
+            </ModalActions>    
+            </Modal>
+        )
+    }
 
     return (
         <>
@@ -53,16 +99,19 @@ function AddHomeItem() {
                         </div>
                         <div className="form-input">
                             <label htmlFor="priority">Priority Level:</label>
-                            <input type="number" value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)} />
+                            <input type="number" max='3' value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)} />
                         </div>
                         <div>
                             <label htmlFor="re_date">Date of repair/replacement:</label>
                             <Datetime value={replaceDate} onChange={date => setReplaceDate(date)} />
                         </div>
                         <div>
-                        <button type="submit">Save & Add Item</button>
+                        <ActionButtons name="Save & Add Item" />
                         </div>
                     </form>
+                    <div>
+                    <ActionButtons name="Reminder?" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -71,3 +120,28 @@ function AddHomeItem() {
 }
 
 export default AddHomeItem
+
+
+{/* <FormField>
+                    Would you like to set a recurring reminder?: <b>{reminder}</b>
+                    </FormField>
+                        <FormField>
+                            <Checkbox
+                            radio
+                            label='Yes!'
+                            name='checkboxRadioGroup'
+                            value='Yes!'
+                            checked={reminder === 'yes'}
+                            onChange={(evt, data) => setReminder(data.value)}
+                            />
+                        </FormField>
+                        <FormField>
+                            <Checkbox
+                            radio
+                            label='No thanks.'
+                            name='checkboxRadioGroup'
+                            value='No thanks.'
+                            checked={reminder === 'no'}
+                            onChange={(evt, data) => setReminder(data.value)}
+                            />
+                        </FormField> */}

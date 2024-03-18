@@ -4,6 +4,7 @@ import user from './user.reducer';
 import item from './item.reducer';
 import itemDetails from './itemDetails.reducer';
 import updateItem from './update.reducer';
+import reminder from './reminder.reducer';
 
 // rootReducer is the primary reducer for our entire project
 const rootReducer = combineReducers({
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   item,
   itemDetails,
   updateItem,
+  reminder,
 });
 
 export default rootReducer;
