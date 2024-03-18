@@ -11,6 +11,7 @@ import {
 
 function AddRemModal() {
   const [open, setOpen] = useState(false);
+  const [secondOpen, setSecondOpen] = useState(false);
 
   return (
     <Modal
@@ -34,11 +35,29 @@ function AddRemModal() {
         <Button
           content="Yes!"
           labelPosition='right'
-          icon='checkmark'
+          icon='right chevron'
           color="olive"
-          onClick={() => setOpen(false)}
+          onClick={() => setSecondOpen(true)}
         />
       </ModalActions>
+
+      <Modal
+          onClose={() => setSecondOpen(false)}
+          open={secondOpen}
+          size='small'
+        >
+          <ModalHeader>Modal #2</ModalHeader>
+          <ModalContent>
+            <p>That's everything!</p>
+          </ModalContent>
+          <ModalActions>
+            <Button
+              icon='check'
+              content='All Done'
+              onClick={() => setSecondOpen(false)}
+            />
+          </ModalActions>
+        </Modal>
     </Modal>
   )
 }
