@@ -33,9 +33,10 @@ function HomeDashboard() {
   const deleteHomeItem = (id, user_id) => {
     dispatch({type: 'DELETE_ITEM', payload: {id, user_id}});
     alert(`Item with id ${id} was successfully deleted.`)
+    // ❗️add confirmation module here❗️
   }
   
-  const markItemComplete = (id) => { //👈bug here: still needs work 
+  const markItemComplete = (id) => { //👈bug here: still needs work ❗️
     console.log('item is:', item);
     
     axios.put(`/api/item/complete/${item.id}`, item)

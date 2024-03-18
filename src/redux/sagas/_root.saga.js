@@ -3,6 +3,7 @@ import loginSaga from './login.saga';
 import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import itemSaga from './item.saga';
+import reminderSaga from './reminder.saga';
 import itemDetailsSaga from './itemDetails.saga';
 
 // some sagas trigger other sagas, as an example
@@ -15,5 +16,6 @@ export default function* rootSaga() {
     userSaga(),
     itemSaga(),
     itemDetailsSaga(),
+    reminderSaga(),
   ]);
 }

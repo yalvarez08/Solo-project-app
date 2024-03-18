@@ -14,11 +14,26 @@ function* fetchReminder() {
     }
 }
 
+function* AddReminder(action) {
+  console.log('added reminder payload:', action.payload)
+    try {
+      const config = {
+        headers: { 'Content-Type': 'application/json' },
+        withCredentials: true,
+      };
+      yield axios.post('/api/reminder', action.payload, config);
+      yield put({type: 'FETCH_REMINDER'});
+    } catch (err) {
+      console.log('AddReminder failed:', err);
+    }
+}
+
+
 
 function* reminderSaga() {
-    yield takeLatest('FETCH_ITEM', fetchItem);
-    yield takeLatest('ADD_ITEM', AddHomeItem);
-    
+    yield takeLatest('FETCH_REMINDER', fetchReminder);
+    yield takeLatest('ADD_REMINDER', AddReminder);
+
   }
   
   export default reminderSaga;

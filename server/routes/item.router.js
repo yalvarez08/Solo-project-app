@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
       res.send(result.rows);
     })
     .catch(err => {
-      console.log('Error with GET all items', err);
+      console.log('Error with GET all items:', err);
       res.sendStatus(500);
     })
 });

@@ -110,7 +110,7 @@ function AddHomeItem() {
                         </div>
                     </form>
                     <div>
-                    <ActionButtons name="Reminder?" />
+                    <ActionButtons name="Set Reminder?" />
                     </div>
                 </div>
             </div>
