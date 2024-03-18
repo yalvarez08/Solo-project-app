@@ -38,7 +38,7 @@ function HomeDashboard() {
       text: "Your maintenance item will be permanently deleted from your list.",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#6E7346",
+      confirmButtonColor: "#ADD444",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
       cancelButtonText: "No, cancel!"
@@ -60,7 +60,7 @@ function HomeDashboard() {
       }})
   }
   
-  const markItemComplete = (id) => { //👈bug here: still needs work ❗️
+  const markItemComplete = (id, user_id) => { //👈bug here: still needs work ❗️
     console.log('item is:', item);
     axios.put(`/api/item/complete/${item.id}`, item)
     .then(res => {
@@ -73,12 +73,6 @@ function HomeDashboard() {
       console.log('Error on is_complete PUT:', err);
     })
   }
-
-  // const AddReminder = () => {
-  //   return (
-  //   <AddRemModal trigger={<Button>Content</Button>} />
-  //   )
-  // }
 
   // <Button icon onClick={() => AddReminder(entry.id, entry.user_id)}><Icon name="bell" /></Button>
   const renderHomeItems = () => {
@@ -107,8 +101,8 @@ function HomeDashboard() {
       <div className="home-content">
         <h2>Welcome, {user.f_name}!</h2>
         <div className="home-btns">
-        <ActionButtons name="Add Home Item" onClick={() => history.push('/add-item')}/>
-        <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
+          <ActionButtons name="Add Home Item" onClick={() => history.push('/add-item')}/>
+          <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
         </div>
         
         <h3>Your Active Home Items</h3>
@@ -134,7 +128,7 @@ function HomeDashboard() {
         </>} 
         </div>
       
-      </div>
+        </div>
       </div>
     </div>
     </>

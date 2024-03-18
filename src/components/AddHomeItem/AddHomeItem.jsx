@@ -30,7 +30,10 @@ function AddHomeItem() {
                 priority_level: priorityLvl,
             },
         });
-        Swal.fire("Success. Your maintanence item has been added!");
+        Swal.fire({
+            confirmButtonColor: "#ADD444",
+            title: "Success. Your maintanence item has been added!"
+        });
         history.push('/dashboard');
     };
 
