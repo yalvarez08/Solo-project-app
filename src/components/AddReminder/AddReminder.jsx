@@ -4,34 +4,33 @@ import SideNav from '../SideNav/SideNav';
 import ActionButtons from '../ActionButtons/ActionButtons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import Datetime from 'react-datetime';
 import './AddReminder.css';
 
 function AddReminder() {
 
-    const [itemName, setItemName] = useState('');
-    const [replaceDate, setReplaceDate] = useState(new Date());
-    const [location, setLocation] = useState('');
-    const [priorityLvl, setPriorityLvl] = useState('');
+    const [frequency, setFrequency] = useState('');
+    const [nextDate, setNextDate] = useState(new Date());
+    const [notes, setNotes] = useState('');
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const submitItem = (evt) => {
+    const submitReminder = (evt) => {
         evt.preventDefault();
         dispatch({
-            type: 'ADD_ITEM',
+            type: 'ADD_REMINDER',
             payload: {
-                name: itemName,
-                re_date: replaceDate,
-                location: location,
-                priority_level: priorityLvl,
+                frequency: frequency,
+                next_date: nextDate,
+                description_notes: notes,
             },
         });
         Swal.fire({
             confirmButtonColor: "#ADD444",
-            title: "Success. Your maintanence item has been added!"
+            title: "Success. A reminder for this maintenance item has been added!"
         });
-        history.push('/dashboard');
+        history.push('/reminders');
     };
 
     return (
@@ -45,30 +44,26 @@ function AddReminder() {
                     </div>
                     <div className="add-rem-form">
                         <h4>Enter reminder details for your existing maintenance item.</h4>
-                        <form onSubmit={submitItem}>
+                        <form onSubmit={submitReminder}>
                             <div className="form-input">
-                                <label htmlFor="name">Item name:</label>
-                                <input value={itemName} required onChange={evt => setItemName(evt.target.value)} />
+                                <label htmlFor="frequency">Frequency:</label>
+                                <input value={frequency} required onChange={evt => setFrequency(evt.target.value)} />
                             </div>
                             <div className="form-input">
-                                <label htmlFor="location">Location:</label>
-                                <input value={location} required onChange={evt => setLocation(evt.target.value)} />
+                                <label htmlFor="nextDate">Next Date:</label>
+                                <Datetime value={nextDate} onChange={date => setNextDate(date)} />
                             </div>
                             <div className="form-input">
-                                <label htmlFor="priority">Priority Level:</label>
-                                <input type="number" max='3' value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)} />
+                                <label htmlFor="notes">Description Notes:</label>
+                                <input value={notes} required onChange={evt => setNotes(evt.target.value)} />
+                                <textarea rows="5" cols="33" placeholder='Enter comment...' maxLength='1000'>
+                                    This is the default comment...  
+                                </textarea>
                             </div>
                             <div>
-                                <label htmlFor="re_date">Date of repair/replacement:</label>
-                                
-                            </div>
-                            <div>
-                                <ActionButtons name="Save & Add Item" />
+                                <ActionButtons name="Save To Reminders" />
                             </div>
                         </form>
-                        <div>
-
-                        </div>
                     </div>
                 </div>
             </div>

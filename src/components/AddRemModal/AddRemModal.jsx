@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import {
-  ModalHeader,
   ModalDescription,
   ModalContent,
   ModalActions,
+  Header,
   Button,
   Icon,
   Modal,
@@ -12,17 +12,17 @@ import {
 
 function AddRemModal() {
   const [open, setOpen] = useState(false);
-//   const [secondOpen, setSecondOpen] = useState(false);
   const history = useHistory();
 
   return (
     <Modal
+      closeIcon
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
       trigger={<Button icon><Icon name="bell" /></Button>}
     >
-      <ModalHeader>Set Reminder</ModalHeader>
+      <Header icon='bell outline' content='Set Reminder' />
       <ModalContent>
         <ModalDescription>      
           <p>

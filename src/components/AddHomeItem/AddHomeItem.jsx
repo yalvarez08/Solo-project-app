@@ -69,9 +69,6 @@ function AddHomeItem() {
                                 <ActionButtons name="Save & Add Item" />
                             </div>
                         </form>
-                        <div>
-
-                        </div>
                     </div>
                 </div>
             </div>
