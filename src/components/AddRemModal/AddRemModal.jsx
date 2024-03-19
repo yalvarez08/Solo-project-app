@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   ModalHeader,
   ModalDescription,
@@ -11,7 +12,8 @@ import {
 
 function AddRemModal() {
   const [open, setOpen] = useState(false);
-  const [secondOpen, setSecondOpen] = useState(false);
+//   const [secondOpen, setSecondOpen] = useState(false);
+  const history = useHistory();
 
   return (
     <Modal
@@ -37,27 +39,9 @@ function AddRemModal() {
           labelPosition='right'
           icon='right chevron'
           color="olive"
-          onClick={() => setSecondOpen(true)}
+          onClick={() => history.push('/add-reminder')}
         />
       </ModalActions>
-
-      <Modal
-          onClose={() => setSecondOpen(false)}
-          open={secondOpen}
-          size='small'
-        >
-          <ModalHeader>Modal #2</ModalHeader>
-          <ModalContent>
-            <p>That's everything!</p>
-          </ModalContent>
-          <ModalActions>
-            <Button
-              icon='check'
-              content='All Done'
-              onClick={() => setSecondOpen(false)}
-            />
-          </ModalActions>
-        </Modal>
     </Modal>
   )
 }

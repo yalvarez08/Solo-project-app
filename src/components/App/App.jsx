@@ -17,6 +17,7 @@ import HomeDashboard from '../HomeDashboard/HomeDashboard';
 import ItemDetails from '../ItemDetails/ItemDetails';
 import AddHomeItem from '../AddHomeItem/AddHomeItem';
 import EditHomeItem from '../EditHomeItem/EditHomeItem';
+import AddReminder from '../AddReminder/AddReminder';
 import Reminders from '../Reminders/Reminders';
 import Calendar from '../Calendar/Calendar';
 import LandingPage from '../LandingPage/LandingPage';
@@ -71,6 +72,12 @@ function App() {
             exact
             path="/add-item">
               <AddHomeItem />
+          </ProtectedRoute>
+          
+          <ProtectedRoute
+            exact
+            path="/add-reminder">
+              <AddReminder />
           </ProtectedRoute>
 
           <Route
