@@ -12,6 +12,7 @@ function ItemDetails() {
   const {id} = useParams();
   const history = useHistory();
   const itemDetails = useSelector(store => store.itemDetails);
+  const remDetails = useSelector(store => store.remDetails);
 
 
   useEffect(() => {
@@ -22,6 +23,11 @@ function ItemDetails() {
   const handleEditClick = () => {
     dispatch({type: 'SET_UPDATE', payload: itemDetails});
     history.push(`/edit-item/${id}`)
+  }
+
+  const handleReminderClick = () => {
+    dispatch({type: 'SET_REM_DETAILS', payload: remDetails});
+    history.push(`/add-reminder`)
   }
 
 
@@ -38,6 +44,9 @@ function ItemDetails() {
             <Icon size="large" name="angle left" onClick={() => history.push('/dashboard')} /> <span>Back to dashboard</span>
             <div className="edit">
               <ActionButtons className="edit-btn" name="Edit Item 🖊️" onClick={handleEditClick} />
+            </div>
+            <div className="edit">             
+              <ActionButtons className="reminder-btn" name="Set Reminder?" onClick={handleReminderClick} />
             </div>
             <div className="info">
               <h2>{itemDetails.name}</h2>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
 import ActionButtons from '../ActionButtons/ActionButtons';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Datetime from 'react-datetime';
+import Swal from 'sweetalert2';
 import './AddReminder.css';
 
 function AddReminder() {
@@ -12,10 +13,18 @@ function AddReminder() {
     const [frequency, setFrequency] = useState('');
     const [nextDate, setNextDate] = useState(new Date());
     const [notes, setNotes] = useState('');
+    const {id} = useParams();
+    const remDetails = useSelector(store => store.remDetails);
 
     const dispatch = useDispatch();
     const history = useHistory();
+    
+    // useEffect(() => {
+    //     dispatch({type: 'FETCH_REM_DETAILS', payload: id});
+    //   }, []); 
+    // console.log('remDetails:', remDetails);
 
+    // dispatch({type: 'SET_REM_DETAILS', payload: remDetails});
     const submitReminder = (evt) => {
         evt.preventDefault();
         dispatch({
@@ -24,13 +33,14 @@ function AddReminder() {
                 frequency: frequency,
                 next_date: nextDate,
                 description_notes: notes,
+                home_item_id: remDetails.id,
             },
         });
         Swal.fire({
             confirmButtonColor: "#ADD444",
             title: "Success. A reminder for this maintenance item has been added!"
         });
-        history.push('/reminders');
+        history.push('/dashboard');
     };
 
     return (
@@ -44,10 +54,17 @@ function AddReminder() {
                     </div>
                     <div className="add-rem-form">
                         <h4>Enter reminder details for your existing maintenance item.</h4>
+                        <h5>{remDetails.name}</h5>
                         <form onSubmit={submitReminder}>
                             <div className="form-input">
                                 <label htmlFor="frequency">Frequency:</label>
-                                <input value={frequency} required onChange={evt => setFrequency(evt.target.value)} />
+                                <select value={frequency} required onChange={evt => setFrequency(evt.target.value)}>
+                                    <option value='select'>Select frequency</option>
+                                    <option value='weekly'>Weekly</option>
+                                    <option value='bi-weekly'>Bi-Weekly</option>
+                                    <option value='monthly'>Monthly</option>
+                                    <option value='annually'>Annually</option>
+                                </select>
                             </div>
                             <div className="form-input">
                                 <label htmlFor="nextDate">Next Date:</label>
@@ -55,10 +72,7 @@ function AddReminder() {
                             </div>
                             <div className="form-input">
                                 <label htmlFor="notes">Description Notes:</label>
-                                <input value={notes} required onChange={evt => setNotes(evt.target.value)} />
-                                <textarea rows="5" cols="33" placeholder='Enter comment...' maxLength='1000'>
-                                    This is the default comment...  
-                                </textarea>
+                                <textarea rows="5" cols="33" value={notes} required onChange={evt => setNotes(evt.target.value)} maxLength='1000'></textarea>
                             </div>
                             <div>
                                 <ActionButtons name="Save To Reminders" />

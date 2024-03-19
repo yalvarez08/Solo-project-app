@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { useHistory, useParams } from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
 import {
   ModalDescription,
   ModalContent,
@@ -13,6 +14,14 @@ import {
 function AddRemModal() {
   const [open, setOpen] = useState(false);
   const history = useHistory();
+  const dispatch = useDispatch();
+  const {id} = useParams();
+  const item = useSelector(store => store.item);
+
+  
+  const handleYes = () => {
+    history.push(`/add-reminder`);
+  }
 
   return (
     <Modal
@@ -39,7 +48,7 @@ function AddRemModal() {
           labelPosition='right'
           icon='right chevron'
           color="olive"
-          onClick={() => history.push('/add-reminder')}
+          onClick={handleYes}
         />
       </ModalActions>
     </Modal>
