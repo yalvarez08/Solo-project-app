@@ -49,6 +49,7 @@ function AddHomeItem() {
                     <div className="form-content">
                         <h4>Enter information about your task below and it will be added to your list of maintenance items.</h4>
                         <form onSubmit={submitItem}>
+                            <div className="form-wrapper">
                             <div className="form-input">
                                 <label htmlFor="name">Item name:</label>
                                 <input value={itemName} required onChange={evt => setItemName(evt.target.value)} />
@@ -61,14 +62,17 @@ function AddHomeItem() {
                                 <label htmlFor="priority">Priority Level:</label>
                                 <input type="number" max='3' value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)} />
                             </div>
-                            <div>
+                            <div className="form-input">
                                 <label htmlFor="re_date">Date of repair/replacement:</label>
                                 <Datetime value={replaceDate} onChange={date => setReplaceDate(date)} />
                             </div>
-                            <div>
-                                <ActionButtons name="Save & Add Item" />
+                            </div>
+                            <div className="saveAdd-btn">
+                                <ActionButtons name="Save & Add Item" /> 
+                                <span className="cancel" onClick={() => history.push('/dashboard')}>Cancel</span>
                             </div>
                         </form>
+                        
                     </div>
                 </div>
             </div>

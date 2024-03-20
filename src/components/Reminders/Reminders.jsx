@@ -3,12 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
-import { GridColumn, Grid, Image, Segment } from 'semantic-ui-react';
+import { GridColumn, Grid, Image, Header, Segment } from 'semantic-ui-react';
 import './Reminders.css';
 
 function Reminders() {
   const reminder = useSelector(store => store.reminder);
   const dispatch = useDispatch();
+  const transitions = ['jiggle', 'tada'];
 
   // on load, fetch and render all user's reminders from db
   useEffect(() => {
@@ -23,7 +24,7 @@ function Reminders() {
                 {reminder.map(rem =>
                   <GridColumn key={rem.id}>
                     <Segment>
-                    <h4>name: {rem.name}</h4>
+                    <Header>{rem.name}</Header>
                     location:{rem.location} frequency:{rem.frequency} next date:{rem.next_date} 
                     notes:{rem.description_notes}</Segment>
                     </GridColumn>
