@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
+import { GridColumn, Grid, Image, Segment } from 'semantic-ui-react';
 import './Reminders.css';
 
 function Reminders() {
@@ -26,6 +27,7 @@ function Reminders() {
           <div className="reminder-content">
             <h3>This is the Reminders page.</h3>
             <>
+            <Grid stackable columns={2}>
               <ul>
                 {reminder.map(rem =>
                   <li key={rem.id}>
@@ -33,6 +35,7 @@ function Reminders() {
                     location:{rem.location} frequency:{rem.frequency} next date:{rem.next_date} notes:{rem.description_notes}</li>
                 )}
               </ul>
+              </Grid>
             </>
           </div>
         </div>
