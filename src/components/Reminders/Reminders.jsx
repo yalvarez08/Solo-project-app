@@ -15,6 +15,28 @@ function Reminders() {
     dispatch({ type: 'FETCH_REMINDER' });
   }, []);
 
+  const renderReminders = () => {
+    if(reminder.length > 0) {
+      return(<>
+      <h3>You currently have {reminder.length} reminders.</h3>
+            <Grid stackable columns={3} padded>
+                {reminder.map(rem =>
+                  <GridColumn key={rem.id}>
+                    <Segment>
+                    <h4>name: {rem.name}</h4>
+                    location:{rem.location} frequency:{rem.frequency} next date:{rem.next_date} 
+                    notes:{rem.description_notes}</Segment>
+                    </GridColumn>
+                )}
+              </Grid>
+        </>)
+    } else {
+      return(<>
+        <h2>Oh no! Looks like you don't have any reminders.</h2>
+      </>)
+    }
+  }
+
   return (
     <>
       <div className="reminder-view">
@@ -25,18 +47,7 @@ function Reminders() {
             <h2>Reminders</h2>
           </div>
           <div className="reminder-content">
-            <h3>This is the Reminders page.</h3>
-            <>
-            <Grid stackable columns={2}>
-              <ul>
-                {reminder.map(rem =>
-                  <li key={rem.id}>
-                    <h4>name: {rem.name}</h4>
-                    location:{rem.location} frequency:{rem.frequency} next date:{rem.next_date} notes:{rem.description_notes}</li>
-                )}
-              </ul>
-              </Grid>
-            </>
+            {renderReminders()}
           </div>
         </div>
       </div>
@@ -45,3 +56,4 @@ function Reminders() {
 }
 
 export default Reminders
+
