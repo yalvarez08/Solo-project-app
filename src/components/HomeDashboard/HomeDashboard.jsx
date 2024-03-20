@@ -102,9 +102,10 @@ function HomeDashboard() {
           <h2>Welcome, {user.f_name}!</h2>
         </div>
         <div className="home-content">
+        <div className="home-btns">
           <ActionButtons name="Add Home Item" onClick={() => history.push('/add-item')}/>
           <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
-        
+        </div>
         
         <h3>Your Active Home Items</h3>
         <div> 

@@ -33,13 +33,16 @@ h3{
         flex-wrap: wrap;
         font-family: "Prompt", sans-serif;
         font-weight: 500;
+
+        .home-btns {
+            display: flex;
+            justify-content: right;  
+        }
+        
+        
     }
 }
-.home-btns {
-    display:flex;
-    padding: 20px;
 
-}
 li {
     list-style: none;
     padding-bottom: 10px;
@@ -48,3 +51,5 @@ li {
     cursor: pointer;
 }
 
+/* display:flex;
+    padding: 20px; */
