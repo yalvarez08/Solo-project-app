@@ -11,8 +11,7 @@ import './Calendar.css';
 function Calendar() {
   const reminder = useSelector(store => store.reminder);
   const dispatch = useDispatch();
-  const [modalOpen, setModalOpen] = useState(false);
-  const calendarRef = useRef(null);
+
 
   // on load, fetch user's reminders so page has info to populate calendar
   useEffect(() => {
@@ -22,12 +21,12 @@ function Calendar() {
   const renderReminders = () => {
     return(
       reminder.map(rem => {
-        const {name, next_date} = rem
+        const {title, start, end} = rem
         
-        let date = new Date(next_date);
         return{
-          name,
-          next_date: date,
+          title: rem.name,
+          start: rem.next_date,
+          end,
           extendedProps: {...rem}
         }
       })
@@ -46,17 +45,17 @@ function Calendar() {
             <div className="calendar-content">
                 <Fullcalendar
             
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            initialView={"dayGridMonth"}
-            headerToolbar={{
-                start: "today prev,next",
-                center: "title",
-                end: "dayGridMonth,timeGridWeek,timeGridDay",
-            }}
-            events={renderReminders()}
-            height={"60vh"}
+                plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                initialView={"dayGridMonth"}
+                headerToolbar={{
+                    start: "today prev,next",
+                    center: "title",
+                    end: "dayGridMonth,timeGridWeek,timeGridDay",
+                }}
+                events={renderReminders()}
+                height={"60vh"}
             
-        />
+                />
             </div>
         </div>
     </div>
