@@ -119,7 +119,6 @@ function HomeDashboard() {
                   <ListContent floated="right">
                   {entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id, entry.user_id)}><Icon name="checkmark" /></Button>}
                   {entry.user_id === user.id && <Button icon onClick={() => deleteHomeItem(entry.id, entry.user_id)}><Icon name="trash alternate outline" /></Button>}
-                  {entry.user_id === user.id && <AddRemModal trigger={<Button>Content</Button>} />}
                   </ListContent>
               </ListItem>
             );

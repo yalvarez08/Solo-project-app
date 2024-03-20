@@ -26,7 +26,7 @@ function ItemDetails() {
   }
 
   const handleReminderClick = () => {
-    dispatch({type: 'SET_REM_DETAILS', payload: remDetails});
+    dispatch({type: 'SET_REM_DETAILS', payload: itemDetails});
     history.push(`/add-reminder`)
   }
 

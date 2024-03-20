@@ -19,12 +19,8 @@ function AddReminder() {
     const dispatch = useDispatch();
     const history = useHistory();
     
-    // useEffect(() => {
-    //     dispatch({type: 'FETCH_REM_DETAILS', payload: id});
-    //   }, []); 
-    // console.log('remDetails:', remDetails);
 
-    // dispatch({type: 'SET_REM_DETAILS', payload: remDetails});
+   
     const submitReminder = (evt) => {
         evt.preventDefault();
         dispatch({
@@ -40,7 +36,7 @@ function AddReminder() {
             confirmButtonColor: "#ADD444",
             title: "Success. A reminder for this maintenance item has been added!"
         });
-        history.push('/dashboard');
+        history.push('/reminders');
     };
 
     return (
@@ -54,7 +50,7 @@ function AddReminder() {
                     </div>
                     <div className="add-rem-form">
                         <h4>Enter reminder details for your existing maintenance item.</h4>
-                        <h5>{remDetails.name}</h5>
+                        <h3>{remDetails.name} </h3> <h4>priority level: {remDetails.priority_level}</h4>
                         <form onSubmit={submitReminder}>
                             <div className="form-input">
                                 <label htmlFor="frequency">Frequency:</label>
