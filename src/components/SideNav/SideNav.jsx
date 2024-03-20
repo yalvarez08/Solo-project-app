@@ -37,10 +37,7 @@ function SideNav() {
                     </li>
                 </ul>
                 </div>
-            <div className='bottom'>
-                <div className='themeOption'></div>
-                <div className='themeOption'></div>
-            </div>
+            
         </div>
     </>)
 }

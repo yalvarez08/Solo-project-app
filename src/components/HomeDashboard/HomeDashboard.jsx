@@ -96,14 +96,15 @@ function HomeDashboard() {
     <>
     <div className="dashboard">
       <SideNav />
-      <div className="home-container">
-      <AppHeader />
-      <div className="home-content">
-        <h2>Welcome, {user.f_name}!</h2>
-        <div className="home-btns">
+        <div className="home-container">
+          <AppHeader />
+        <div className="home-title">
+          <h2>Welcome, {user.f_name}!</h2>
+        </div>
+        <div className="home-content">
           <ActionButtons name="Add Home Item" onClick={() => history.push('/add-item')}/>
           <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
-        </div>
+        
         
         <h3>Your Active Home Items</h3>
         <div> 
@@ -126,10 +127,9 @@ function HomeDashboard() {
           </List>
         </>} 
         </div>
-      
+        </div>
         </div>
       </div>
-    </div>
     </>
   );
 }

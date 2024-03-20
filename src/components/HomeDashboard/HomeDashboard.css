@@ -16,12 +16,23 @@ h3{
     flex: 5;
     padding-top: 10px;
 
-    .home-content {
-        padding-top: 50px;
-        padding-left: 70px;
-        padding-right: 50px;
+    .home-title {
+        padding: 30px;
+        padding-left: 50px;
+        box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        flex-wrap: wrap;
         font-family: "Prompt", sans-serif;
         font-weight: 400;
+    }
+    .home-content {
+        padding: 30px;
+        padding-left: 50px;
+        box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+        flex-wrap: wrap;
+        font-family: "Prompt", sans-serif;
+        font-weight: 500;
     }
 }
 .home-btns {
