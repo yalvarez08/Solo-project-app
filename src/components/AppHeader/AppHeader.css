@@ -25,10 +25,11 @@
 }
 .navLink {
   text-decoration: none;
-  font-size: 16px;
+  font-size: 18px;
   font-family: "Prompt", sans-serif;
+  color: #1e2722;
 }
 
 .navLink:hover {
-  background-color: #008183;
+  background-color: transparent;
 }

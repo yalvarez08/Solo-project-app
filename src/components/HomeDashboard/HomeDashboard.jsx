@@ -103,7 +103,7 @@ function HomeDashboard() {
         </div>
         <div className="home-content">
         <div className="home-btns">
-          <ActionButtons name="Add Home Item" onClick={() => history.push('/add-item')}/>
+          <ActionButtons name="Add Home Item ✚" onClick={() => history.push('/add-item')}/>
           <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
         </div>
         
@@ -118,7 +118,7 @@ function HomeDashboard() {
                 <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
                   {entry.name} priority level: {entry.priority_level}
                 </ListContent>
-                  <ListContent floated="right">
+                  <ListContent floated="right" className="togglebtns">
                   {entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id, entry.user_id)}><Icon name="checkmark" /></Button>}
                   {entry.user_id === user.id && <Button icon onClick={() => deleteHomeItem(entry.id, entry.user_id)}><Icon name="trash alternate outline" /></Button>}
                   </ListContent>

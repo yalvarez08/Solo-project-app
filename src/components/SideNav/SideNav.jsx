@@ -14,7 +14,7 @@ function SideNav() {
     return (<>
         <div className='sidenav'>
             <div className='top'>
-                <span className='logo'>Casalogue</span>
+                <span className='logo' onClick={() => history.push('/dashboard')}>Casalogue</span>
             </div>
             <hr />
             <div className='center'>

@@ -39,6 +39,9 @@ h3{
             justify-content: right;  
         }
         
+        .togglebtns {
+            padding-right: 10px;
+        }
         
     }
 }
@@ -50,6 +53,8 @@ li {
 .image {
     cursor: pointer;
 }
+
+
 
 /* display:flex;
     padding: 20px; */

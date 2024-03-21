@@ -14,7 +14,14 @@
 .login-wrapper {
     width: 420px;
     padding-top: 40px;
-    
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    color:#292929;
+    -webkit-box-shadow: 10px 10px 23px 5px rgba(113,133,123,0.75);
+    -moz-box-shadow: 10px 10px 23px 5px rgba(113,133,123,0.75);
+    box-shadow: 10px 10px 23px 5px rgba(113,133,123,0.75);
+    border-radius: 10px;
+    padding: 30px 40px;
     
     h2 {
         font-size: 36px;
@@ -54,10 +61,9 @@
 
     }
 }
-.btn-box {
-    padding-top: 30px;
+/* .btn-box {
     padding-left: 40px;
-}
+} */
 .login-btn {
     width: 40%;
     height: 30px;
@@ -69,4 +75,8 @@
     font-weight: 600;
     cursor: pointer;
     
+}
+.register-span {
+    text-align: center;
+    margin: 30px 0 15px;
 }

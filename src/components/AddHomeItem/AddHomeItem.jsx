@@ -74,12 +74,25 @@ function AddHomeItem() {
                             </div>
                             <div className="form-input">
                                 <label htmlFor="location">Location:</label>
-                                <input value={location} required onChange={evt => setLocation(evt.target.value)} />
+                                <select value={location} required onChange={evt => setLocation(evt.target.value)}>
+                                <option value=''>Select location</option>
+                                    <option value='attic'>attic</option>
+                                    <option value='bathroom'>bathroom</option>
+                                    <option value='basement'>basement</option>
+                                    <option value='bedroom'>bedroom</option>
+                                    <option value='dining room'>dining room</option>
+                                    <option value='exterior'>exterior</option>
+                                    <option value='foyer'>foyer</option>
+                                    <option value='garage'>garage</option>
+                                    <option value='hallway'>hallway</option>
+                                    <option value='kitchen'>kitchen</option>
+                                    <option value='outdoors'>outdoors</option>
+                                </select>
                             </div>
                             <div className="form-input">
                                 <label htmlFor="priority">Priority Level:</label>
                                 <select value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)}>
-                                <option value='select'>Select</option>
+                                <option value=''>Select</option>
                                     <option value='1'>1</option>
                                     <option value='2'>2</option>
                                     <option value='3'>3</option>

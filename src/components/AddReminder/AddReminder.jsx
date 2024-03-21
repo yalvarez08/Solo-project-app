@@ -55,7 +55,7 @@ function AddReminder() {
                             <div className="form-input">
                                 <label htmlFor="frequency">Frequency:</label>
                                 <select value={frequency} required onChange={evt => setFrequency(evt.target.value)}>
-                                    <option value='select'>Select frequency</option>
+                                    <option value=''>Select frequency</option>
                                     <option value='weekly'>Weekly</option>
                                     <option value='bi-weekly'>Bi-Weekly</option>
                                     <option value='monthly'>Monthly</option>
