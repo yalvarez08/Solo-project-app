@@ -76,10 +76,12 @@ function EditHomeItem() {
               name="re_date"
               required
               value={replaceDate}
-              onChange={(date) => setReplaceDate(date)}
+              onChange={date => setReplaceDate(date)}
             />
-            <ActionButtons className="saveEdits-btn" type="submit" name="Save Changes" />
-
+            <div className="saveEdit-btn">
+                  <ActionButtons name="Save Changes" /> 
+                  <span className="cancel" onClick={() => history.push('/dashboard')}>Cancel</span>
+            </div>
             </form>
           </div>
         </div>
