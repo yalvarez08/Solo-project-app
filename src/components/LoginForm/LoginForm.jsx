@@ -61,10 +61,11 @@ function LoginForm() {
           />
           <RiLockPasswordFill className="log-icon"/>
         </label>
+        <div className="btn-box">
+          <button className="login-btn" type="submit" name="submit">Log In</button>
+        </div>
       </div>
-      <div className="login-btn">
-        <button type="submit" name="submit">Log In</button>
-      </div>
+      
     </form>
   );
 }

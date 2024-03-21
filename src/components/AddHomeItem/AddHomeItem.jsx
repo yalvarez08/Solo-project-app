@@ -78,7 +78,12 @@ function AddHomeItem() {
                             </div>
                             <div className="form-input">
                                 <label htmlFor="priority">Priority Level:</label>
-                                <input type="number" max='3' value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)} />
+                                <select value={priorityLvl} required onChange={evt => setPriorityLvl(evt.target.value)}>
+                                <option value='select'>Select</option>
+                                    <option value='1'>1</option>
+                                    <option value='2'>2</option>
+                                    <option value='3'>3</option>
+                                </select>
                             </div>
                             <div className="form-input">
                                 <label htmlFor="re_date">Date of repair/replacement:</label>

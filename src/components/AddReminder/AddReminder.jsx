@@ -68,7 +68,7 @@ function AddReminder() {
                             </div>
                             <div className="form-input">
                                 <label htmlFor="notes">Description Notes:</label>
-                                <textarea rows="5" cols="33" value={notes} required onChange={evt => setNotes(evt.target.value)} maxLength='1000'></textarea>
+                                <textarea rows="5" cols="33" value={notes} onChange={evt => setNotes(evt.target.value)} maxLength='1000'></textarea>
                             </div>
                             <div>
                                 <ActionButtons name="Save To Reminders" />
