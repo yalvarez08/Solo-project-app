@@ -37,6 +37,24 @@ function AddHomeItem() {
         history.push('/dashboard');
     };
 
+    const handleCancel = () => {
+        console.log('cancel button clicked.');
+        Swal.fire({
+          title: "Cancel new item entry?",
+          text: "Information entered on this page will not be saved.",
+          showCancelButton: true,
+          confirmButtonColor: "#ADD444",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, cancel",
+          cancelButtonText: "No!"
+        })
+        .then(result => {
+          if(result.isConfirmed) {
+            history.push('/dashboard');
+          } 
+          })
+      }
+
     return (
         <>
             <div className="add-view">
@@ -69,7 +87,7 @@ function AddHomeItem() {
                             </div>
                             <div className="saveAdd-btn">
                                 <ActionButtons name="Save & Add Item" /> 
-                                <span className="cancel" onClick={() => history.push('/dashboard')}>Cancel</span>
+                                <span className="cancel" onClick={handleCancel}>Cancel</span>
                             </div>
                         </form>
                         

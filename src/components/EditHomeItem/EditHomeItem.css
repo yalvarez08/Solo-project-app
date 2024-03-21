@@ -30,3 +30,12 @@
         font-family: "Prompt", sans-serif;
     }
 }
+.saveEdit-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: underline;
+}
+.cancel {
+    cursor: pointer;
+}

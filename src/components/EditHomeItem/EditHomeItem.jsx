@@ -6,6 +6,7 @@ import axios from 'axios';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import Datetime from 'react-datetime';
+import Swal from 'sweetalert2';
 import { Icon } from 'semantic-ui-react';
 import './EditHomeItem.css';
 
@@ -36,6 +37,25 @@ function EditHomeItem() {
             console.log('Error with updating home item info:', err);
         })
     }
+
+    const handleCancel = () => {
+      console.log('cancel button clicked.');
+      Swal.fire({
+        title: "Cancel edit?",
+        text: "Any changes made to this maintenance item will not be saved.",
+        showCancelButton: true,
+        confirmButtonColor: "#ADD444",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, cancel",
+        cancelButtonText: "No!"
+      })
+      .then(result => {
+        if(result.isConfirmed) {
+          history.push('/dashboard');
+        } 
+        })
+    }
+  
 
     return (
       <>
@@ -80,7 +100,7 @@ function EditHomeItem() {
             />
             <div className="saveEdit-btn">
                   <ActionButtons name="Save Changes" /> 
-                  <span className="cancel" onClick={() => history.push('/dashboard')}>Cancel</span>
+                  <span className="cancel" onClick={handleCancel}>Cancel</span>
             </div>
             </form>
           </div>
