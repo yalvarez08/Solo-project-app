@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {useSelector} from 'react-redux';
+import { FaHouseUser } from "react-icons/fa";
+import { RiLockPasswordFill } from "react-icons/ri";
+import './LoginForm.css';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -25,14 +28,15 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
-      <h2>Login</h2>
+    <form className="login-wrapper" onSubmit={login}>
+      <h2>Welcome back!</h2>
+      <h4>Please login to your account</h4>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}
         </h3>
       )}
-      <div>
+      <div className="input-box">
         <label htmlFor="username">
           Username:
           <input
@@ -42,9 +46,10 @@ function LoginForm() {
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
+          <FaHouseUser className="log-icon"/>
         </label>
       </div>
-      <div>
+      <div className="input-box">
         <label htmlFor="password">
           Password:
           <input
@@ -54,10 +59,11 @@ function LoginForm() {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
+          <RiLockPasswordFill className="log-icon"/>
         </label>
       </div>
-      <div>
-        <input className="btn" type="submit" name="submit" value="Log In" />
+      <div className="login-btn">
+        <button type="submit" name="submit">Log In</button>
       </div>
     </form>
   );
