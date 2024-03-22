@@ -23,4 +23,22 @@
         margin: 20px;
         flex-wrap: wrap;
     }
+    .rem-wrapper {
+        display: flex;
+    }
+    .form-input {
+        width: 30%;
+    }
+    label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    } 
+}
+span {
+    font-weight: 400;
+}
+
+.rem-name {
+    font-weight: 500;
 }

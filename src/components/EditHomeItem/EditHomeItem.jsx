@@ -73,7 +73,7 @@ function EditHomeItem() {
             <h2>Edit Item</h2>
           </div>
           <div className="edit-content">
-            <Icon size="large" name="angle left" onClick={() => history.push('/dashboard')} /> <span>Back to dashboard</span>
+            <Icon size="large" name="angle left" onClick={() => history.push('/dashboard')} /> <span className="back-dsh-arrow">Back to dashboard</span>
  
             <form onSubmit={handleSaveChanges}>
             <div className="form-wrapper">

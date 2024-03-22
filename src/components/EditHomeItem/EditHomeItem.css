@@ -44,11 +44,17 @@ label {
     align-items: center;
     gap: 10px;
 }
+.back-dsh-arrow {
+    font-weight: 500;
+}
 .saveEdit-btn {
     display: flex;
     align-items: center;
     gap: 20px;
     text-decoration: underline;
+}
+span {
+    font-weight: 600;
 }
 .cancel {
     cursor: pointer;

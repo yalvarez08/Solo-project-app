@@ -12,7 +12,7 @@ function ItemDetails() {
   const {id} = useParams();
   const history = useHistory();
   const itemDetails = useSelector(store => store.itemDetails);
-  const remDetails = useSelector(store => store.remDetails);
+  // const remDetails = useSelector(store => store.remDetails);
 
 
   useEffect(() => {
@@ -62,7 +62,7 @@ function ItemDetails() {
             <h2>Item Details</h2>
           </div>
           <div className="details-content">
-            <Icon size="large" name="angle left" onClick={() => history.push('/dashboard')} /> <span>Back to dashboard</span>
+            <Icon size="large" name="angle left" onClick={() => history.push('/dashboard')} /> <span className="back-dsh-arrow">Back to dashboard</span>
             <div className="edit">
               <ActionButtons className="edit-btn" name="Edit Item 🖊️" onClick={handleEditClick} />
             </div>
@@ -73,7 +73,7 @@ function ItemDetails() {
               <h2>{itemDetails.name}</h2> <p>Priority level: <span style={{color: `${checkColor()}`}}>{itemDetails.priority_level}</span></p>
                 <img width={50} height={50} src={"/home-placeholder.jpeg"} />
                 <p>Location: {itemDetails.location}</p>
-                <p>Last Date: {itemDetails.re_date}</p>
+                <p>Last Date of Maintenance: {new Date(itemDetails.re_date).toLocaleDateString()}</p>
             </div>
           </div>
         </div>

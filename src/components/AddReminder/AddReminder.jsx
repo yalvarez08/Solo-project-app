@@ -18,8 +18,19 @@ function AddReminder() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-    
-
+   
+      
+    const checkColor = () => {
+        switch (remDetails.priority_level) {
+        case "high":
+            return "red";
+        case "medium":
+            return "#FCCE45";
+        case "low":
+            return "green";
+        default:
+        }
+    }
    
     const submitReminder = (evt) => {
         evt.preventDefault();
@@ -50,26 +61,28 @@ function AddReminder() {
                     </div>
                     <div className="add-rem-form">
                         <h4>Enter reminder details for your existing maintenance item.</h4>
-                        <h3>{remDetails.name} </h3> <h4>priority level: {remDetails.priority_level}</h4>
+                        <h3 className="rem-name">{remDetails.name} </h3> <h3>Priority level: <span style={{color: `${checkColor()}`}}>{remDetails.priority_level}</span></h3>
                         <form onSubmit={submitReminder}>
-                            <div className="form-input">
-                                <label htmlFor="frequency">Frequency:</label>
-                                <select value={frequency} required onChange={evt => setFrequency(evt.target.value)}>
-                                    <option value=''>Select frequency</option>
-                                    <option value='weekly'>Weekly</option>
-                                    <option value='bi-weekly'>Bi-Weekly</option>
-                                    <option value='monthly'>Monthly</option>
-                                    <option value='annually'>Annually</option>
-                                </select>
-                            </div>
-                            <div className="form-input">
-                                <label htmlFor="nextDate">Next Date:</label>
-                                <Datetime value={nextDate} onChange={date => setNextDate(date)} />
-                            </div>
-                            <div className="form-input">
-                                <label htmlFor="notes">Description Notes:</label>
-                                <textarea rows="5" cols="33" value={notes} onChange={evt => setNotes(evt.target.value)} maxLength='1000'></textarea>
-                            </div>
+                            <div className="rem-wrapper">
+                                <div className="form-input">
+                                    <label htmlFor="frequency">Frequency:</label>
+                                    <select value={frequency} required onChange={evt => setFrequency(evt.target.value)}>
+                                        <option value=''>Select frequency</option>
+                                        <option value='weekly'>Weekly</option>
+                                        <option value='bi-weekly'>Bi-Weekly</option>
+                                        <option value='monthly'>Monthly</option>
+                                        <option value='annually'>Annually</option>
+                                    </select>
+                                </div>
+                                <div className="form-input">
+                                    <label htmlFor="nextDate">Next Date:</label>
+                                    <Datetime value={nextDate} onChange={date => setNextDate(date)} />
+                                </div>
+                                <div className="form-input">
+                                    <label htmlFor="notes">Description Notes:</label>
+                                    <textarea rows="5" cols="33" value={notes} onChange={evt => setNotes(evt.target.value)} maxLength='200'></textarea>
+                                </div>
+                                </div>
                             <div>
                                 <ActionButtons name="Save To Reminders" />
                             </div>
