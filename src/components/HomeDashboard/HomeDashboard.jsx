@@ -3,7 +3,6 @@ import axios from 'axios';
 import AppHeader from '../AppHeader/AppHeader';
 import SideNav from '../SideNav/SideNav';
 import ActionButtons from '../ActionButtons/ActionButtons';
-import AddRemModal from '../AddRemModal/AddRemModal';
 import Swal from 'sweetalert2';
 import {useSelector, useDispatch} from 'react-redux';
 import {useHistory} from 'react-router-dom';
@@ -31,6 +30,7 @@ function HomeDashboard() {
   useEffect(() => {
     dispatch({type: 'FETCH_ITEM'});
   }, []);
+
   
   const deleteHomeItem = (id, user_id) => {
     Swal.fire({
@@ -74,16 +74,15 @@ function HomeDashboard() {
     })
   }
 
-  // <Button icon onClick={() => AddReminder(entry.id, entry.user_id)}><Icon name="bell" /></Button>
   const renderHomeItems = () => {
     return (<>
-    <List relaxed divided verticalAlign="middle" size="big">
+    <List relaxed="very" divided animated verticalAlign="middle" size="big">
       {item.map(entry => {
       return(
         <ListItem key={entry.id}>
-          <ListContent>
+          <ListContent >
               <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
-              {entry.name} priority level: {entry.priority_level}
+              {entry.name} 
           </ListContent>
         </ListItem>
       );
@@ -116,7 +115,7 @@ function HomeDashboard() {
               <ListItem key={entry.id}>
                 <ListContent>
                 <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
-                  {entry.name} priority level: {entry.priority_level}
+                  {entry.name} 
                 </ListContent>
                   <ListContent floated="right" className="togglebtns">
                   {entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id, entry.user_id)}><Icon name="checkmark" /></Button>}

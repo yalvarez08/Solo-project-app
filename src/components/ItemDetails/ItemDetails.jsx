@@ -20,6 +20,27 @@ function ItemDetails() {
   }, []);
 // console.log('rendering item details:', itemDetails);
   
+
+  if(itemDetails.priority_level === 3) {
+    itemDetails.priority_level = "high"
+  } else if(itemDetails.priority_level === 2) {
+    itemDetails.priority_level = "medium"
+  } else if (itemDetails.priority_level === 1) {
+    itemDetails.priority_level = "low"
+  }
+  
+  const checkColor = () => {
+    switch (itemDetails.priority_level) {
+      case "high":
+        return "red";
+      case "medium":
+        return "#FCCE45";
+      case "low":
+        return "green";
+      default:
+    }
+  }
+
   const handleEditClick = () => {
     dispatch({type: 'SET_UPDATE', payload: itemDetails});
     history.push(`/edit-item/${id}`)
@@ -49,11 +70,10 @@ function ItemDetails() {
               <ActionButtons className="reminder-btn" name="Set Reminder?" onClick={handleReminderClick} />
             </div>
             <div className="info">
-              <h2>{itemDetails.name}</h2>
+              <h2>{itemDetails.name}</h2> <p>Priority level: <span style={{color: `${checkColor()}`}}>{itemDetails.priority_level}</span></p>
                 <img width={50} height={50} src={"/home-placeholder.jpeg"} />
-                <p>Priority level: {itemDetails.priority_level}</p>
-                <p>{itemDetails.location}</p>
-                <p>{itemDetails.re_date}</p>
+                <p>Location: {itemDetails.location}</p>
+                <p>Last Date: {itemDetails.re_date}</p>
             </div>
           </div>
         </div>

@@ -32,6 +32,10 @@
         text-align: center;
     }
 }
+p, span {
+    font-size: 16px;
+}
+
 .icon{
     cursor: pointer;
 }

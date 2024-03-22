@@ -45,6 +45,11 @@ h3{
         
     }
 }
+.priority-lvl {
+    color:red;
+    justify-content: right;
+}
+
 
 li {
     list-style: none;
@@ -52,6 +57,7 @@ li {
 }
 .image {
     cursor: pointer;
+    
 }
 
 

@@ -39,8 +39,8 @@ function App() {
     <Router>
       <div>
         <Switch>
-          {/* Visiting localhost:5173 will redirect to localhost:5173/dashboard */}
-          <Redirect exact from="/" to="/dashboard" />
+          {/* Visiting localhost:5173 will redirect to localhost:5173/login */}
+          <Redirect exact from="/" to="/login" />
 
           <Route
             exact
@@ -50,9 +50,8 @@ function App() {
           </Route>
 
           {/* For protected routes, the view could show one of several things on the same route.
-            Visiting localhost:5173/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
-            Even though it seems like they are different pages, the user is always on localhost:5173/user */}
+            Even though it seems like they are different pages, the user is always on localhost:5173/dashboard if logged in */}
           <ProtectedRoute
             // logged in shows HomeDashboard else shows LoginPage
             exact
