@@ -21,7 +21,7 @@
     border: 0 none;
     --borderRadius: 20px;
     border-radius: var(--borderRadius);
-    --color-smoke: #e4e4e4;
+    --color-smoke: #bfbfbf;
     font-size: 13px;
     font-weight: 500;
     line-height: 1.5;
@@ -34,7 +34,7 @@
     align-items: center;
     flex: 0 0 160px;
     
-    box-shadow: 2px 5px 10px var(--color-smoke);
+    box-shadow: 10px 10px 10px var(--color-smoke);
     
     &:hover {
       color: #202129;
