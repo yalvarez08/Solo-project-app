@@ -17,7 +17,7 @@
         font-family: "Prompt", sans-serif;
     }
 
-    .edit-content, .edit-form {
+    .edit-content {
         padding: 30px;
         padding-left: 50px;
         box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.1);
@@ -25,10 +25,24 @@
         flex-wrap: wrap;
         font-family: "Prompt", sans-serif;
         font-weight: 500;
+
+        .edit-wrapper {
+            display: flex;
+        }
+        .edit-input {
+            width: 30%; 
+        }
     }
+    
     input {
         font-family: "Prompt", sans-serif;
+        
     }
+}
+label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 .saveEdit-btn {
     display: flex;
