@@ -37,7 +37,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
-// POST new item to db
+// POST route to add new item to db
 router.post('/', rejectUnauthenticated, (req, res) => {
   console.log('POST item req.body:', req.body)
   const sqlText = `INSERT INTO "home_item" ("name", "re_date", "location", "priority_level", "user_id")
@@ -72,7 +72,7 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
   }
 });
 
-// PUT item; allow user to update item details
+// PUT route to allow user to update item details
 router.put('/:id', rejectUnauthenticated, (req, res) => {
   console.log('reqbody', req.body);
   console.log('req.params', req.params);
@@ -91,19 +91,20 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     })
 });
 
-// PUT item; allow user to mark as completed
+// PUT route to allow user to mark as completed
 router.put('/complete/:id', rejectUnauthenticated, (req, res) => {
-  console.log(`UPDATE item ${req.params.id}. req.body:`, req.body);
+  let id = req.params.id;
+  console.log(`UPDATE item ${id}. req.body:`, req.body);
     const sqlText = `
       UPDATE "home_item" SET "is_complete" = TRUE 
       WHERE id = $1;`; 
-    pool.query(sqlText, [req.params.id, req.body.is_complete])
+    pool.query(sqlText, [id])
     .then(result => {
-      console.log('UPDATE item to complete was successful:', sqlText);
+      console.log('UPDATE query to "is_complete" was successful:', sqlText);
       res.sendStatus(201)
     })
     .catch(err => {
-      console.log('Error with UPDATE item:', err)
+      console.log('Error with UPDATE "is_complete" query:', err)
       res.sendStatus(500);
     })
 });

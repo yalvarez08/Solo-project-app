@@ -9,11 +9,11 @@ import {useHistory} from 'react-router-dom';
 import {
   Button,
   ListItem,
-  ListHeader,
   ListContent,
   Icon,
   Image,
   List,
+  Popup
 } from 'semantic-ui-react';
 import './HomeDashboard.css';
 
@@ -21,6 +21,7 @@ function HomeDashboard() {
   const user = useSelector(store => store.user);
   const item = useSelector(store => store.item);
   const updateItem = useSelector(store => store.updateItem);
+  const itemDetails = useSelector(store => store.itemDetails);
 
   const [toggleManageBtn, setToggleManageBtn] = useState(true);
   const dispatch = useDispatch();
@@ -31,7 +32,7 @@ function HomeDashboard() {
     dispatch({type: 'FETCH_ITEM'});
   }, []);
 
-  
+// runs when user clicks trash button to delete item  
   const deleteHomeItem = (id, user_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -60,17 +61,22 @@ function HomeDashboard() {
       }})
   }
   
-  const markItemComplete = (id, user_id) => { //👈bug here: still needs work ❗️
-    console.log('item is:', item);
-    axios.put(`/api/item/complete/${item.id}`, item)
+// runs when user clicks check button to mark item as complete  
+  const markItemComplete = (id) => { 
+    console.log('item is:', itemDetails);
+    dispatch({type: 'SET_UPDATE', payload: itemDetails});
+    //console.log('mark complete updateItem:', updateItem);
+    axios.put(`/api/item/complete/${id}`, updateItem)
     .then(res => {
-      // console.log('updateItem:', updateItem);
-      alert(`Item with id ${id} was updated to "complete".`)
-      dispatch({type: 'SET_UPDATE', payload: updateItem});
+      dispatch({type: 'CLEAR_UPDATE'});
+      dispatch({type: 'FETCH_ITEM'});
+      Swal.fire({
+        confirmButtonColor: "#ADD444",
+        title: 'Task item has been marked complete.'
+      });
     })
     .catch(err => {
-      alert(`Oops, Item with id ${id} failed to update.`);
-      console.log('Error on is_complete PUT:', err);
+      console.log('Error with updating is_complete info:', err);
     })
   }
 
@@ -90,6 +96,12 @@ function HomeDashboard() {
     </List>
     </>)
   };
+
+  const style = {
+    borderRadius: 3,
+    opacity: 0.8,
+    padding: '1em',
+  }
   
   return (
     <>
@@ -118,8 +130,14 @@ function HomeDashboard() {
                   {entry.name} 
                 </ListContent>
                   <ListContent floated="right" className="togglebtns">
-                  {entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id, entry.user_id)}><Icon name="checkmark" /></Button>}
-                  {entry.user_id === user.id && <Button icon onClick={() => deleteHomeItem(entry.id, entry.user_id)}><Icon name="trash alternate outline" /></Button>}
+                  <Popup content='click to mark item complete' position='left center' style={style} inverted
+                  trigger={entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id)}><Icon name="checkmark" /></Button>}
+                  />
+                  {/* {entry.user_id === user.id && <Button icon onClick={() => markItemComplete(entry.id)}><Icon name="checkmark" /></Button>} */}
+                  <Popup content='click to delete item' position='left center' style={style} inverted
+                  trigger={entry.user_id === user.id && <Button icon onClick={() => deleteHomeItem(entry.id, entry.user_id)}><Icon name="trash alternate outline" /></Button>}
+                  />
+                  {/* {entry.user_id === user.id && <Button icon onClick={() => deleteHomeItem(entry.id, entry.user_id)}><Icon name="trash alternate outline" /></Button>} */}
                   </ListContent>
               </ListItem>
             );
