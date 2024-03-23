@@ -36,7 +36,7 @@ function EditHomeItem() {
               confirmButtonColor: "#ADD444",
               title: "Success. Changes have been saved!"
             });
-            history.push('/dashboard'); //redirect back to user dashboard
+            history.push(`/item-details/${updateItem.id}`); //redirect back to user dashboard
         })
         .catch(err => {
             console.log('Error with updating home item info:', err);
