@@ -13,7 +13,13 @@
 
 .block-1 {
     width: 50%;
-    background-color: #6E7346;
+    /* background-color: #6E7346; */
+    
+    .logo-img-2 {
+        padding-left: 50px;
+        width: 100%;
+        height: auto;
+    }
 }
 
 .block-2 {

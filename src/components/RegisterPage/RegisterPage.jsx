@@ -7,7 +7,7 @@ function RegisterPage() {
   return (<>
     <div className="register-container">
       <div className="block-1">
-        <h2>Casalogue logo here -- register page</h2>
+      <img className="logo-img-2" src={"/Casalogue Home Logo.png"} />
 
       </div>
       <div className="block-2">

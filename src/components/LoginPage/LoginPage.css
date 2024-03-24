@@ -13,7 +13,14 @@
 
 .block-1 {
     width: 50%;
-    background-color: #6E7346;
+    /* background-color: #6E7346; */
+
+    .logo-img {
+        
+        padding-left: 50px;
+        width: 100%;
+        height: auto;
+    }
 }
 
 .block-2 {
@@ -24,6 +31,7 @@
     justify-content: center;
 
     .block-2-login {
+        padding-top: 30px;
         padding-left: 100px;
     }
 }
