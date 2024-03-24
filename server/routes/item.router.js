@@ -8,7 +8,8 @@ const {
 // GET route to get items for logged in user from db
 router.get('/', (req, res) => {
   const sqlText = `
-    SELECT * FROM "home_item" WHERE "user_id" = $1;
+    SELECT * FROM "home_item" WHERE "user_id" = $1
+    ORDER BY home_item.is_complete ASC;
     `;
     pool.query(sqlText, [req.user.id])
     .then(result => {

@@ -3,7 +3,7 @@ import './Footer.css';
 
 
 function Footer() {
-  return <footer>&copy; Casalogue 🏠 Yailene Alvarez</footer>;
+  return <footer>&copy; Yailene Alvarez</footer>;
 }
 
 export default Footer;

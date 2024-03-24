@@ -86,9 +86,9 @@ function HomeDashboard() {
       {item.map(entry => {
       return(
         <ListItem key={entry.id}>
-          <ListContent >
+          <ListContent>
               <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
-              {entry.name} 
+              {entry.is_complete ? <span style={completionStyle}>{entry.name}</span> : entry.name}
           </ListContent>
         </ListItem>
       );
@@ -97,6 +97,13 @@ function HomeDashboard() {
     </>)
   };
 
+// this style is applied to item name when is_complete = true
+  const completionStyle = {
+    textDecoration: 'line-through',
+    color: 'grey',
+  }
+
+// this is styling for popup that appears when hovering over check or trashbin buttons
   const style = {
     borderRadius: 3,
     opacity: 0.8,
@@ -117,9 +124,8 @@ function HomeDashboard() {
           <ActionButtons name="Add Home Item ✚" onClick={() => history.push('/add-item')}/>
           <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
         </div>
-        
-        <h3>Your Active Home Items</h3>
         <div> 
+        <h3>Your Maintenance Items:</h3>
         { toggleManageBtn ? renderHomeItems() : <>
           <List relaxed divided verticalAlign="middle" size="big">
           {item.map(entry => {
@@ -154,10 +160,3 @@ function HomeDashboard() {
 
 
 export default HomeDashboard;
-
-
-// <li key={entry.id}> <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
-  //    <ListContent>
-  //       <ListHeader>{entry.name} priority level: {entry.priority_level}</ListHeader>
-  //    </ListContent> 
-  // </li>
