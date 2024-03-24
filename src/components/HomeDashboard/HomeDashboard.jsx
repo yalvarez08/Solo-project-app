@@ -100,7 +100,7 @@ function HomeDashboard() {
 // this style is applied to item name when is_complete = true
   const completionStyle = {
     textDecoration: 'line-through',
-    color: 'grey',
+    color: '#006600',
   }
 
 // this is styling for popup that appears when hovering over check or trashbin buttons
@@ -125,7 +125,7 @@ function HomeDashboard() {
           <ActionButtons name="Manage Items" onClick={() => setToggleManageBtn(!toggleManageBtn)}/>
         </div>
         <div> 
-        <h3>Your Maintenance Items:</h3>
+        <h3 className="mx-subheader">Your Maintenance Items:</h3>
         { toggleManageBtn ? renderHomeItems() : <>
           <List relaxed divided verticalAlign="middle" size="big">
           {item.map(entry => {
@@ -133,7 +133,7 @@ function HomeDashboard() {
               <ListItem key={entry.id}>
                 <ListContent>
                 <Image avatar src={"/home-placeholder.jpeg"} onClick={() => history.push(`/item-details/${entry.id}`)}/>
-                  {entry.name} 
+                {entry.is_complete ? <span style={completionStyle}>{entry.name}</span> : entry.name} 
                 </ListContent>
                   <ListContent floated="right" className="togglebtns">
                   <Popup content='click to mark item complete' position='left center' style={style} inverted

@@ -1,28 +1,24 @@
 import React from 'react';
-
-import { useHistory } from 'react-router-dom';
 import RegisterForm from '../RegisterForm/RegisterForm';
+import './RegisterPage.css';
 
 function RegisterPage() {
-  const history = useHistory();
 
-  return (
-    <div>
+  return (<>
+    <div className="register-container">
+      <div className="block-1">
+        <h2>Casalogue logo here -- register page</h2>
+
+      </div>
+      <div className="block-2">
+        <div className="block-2-register">
       <RegisterForm />
 
-      <center>
-        <button
-          type="button"
-          className="btn btn_asLink"
-          onClick={() => {
-            history.push('/login');
-          }}
-        >
-          Login
-        </button>
-      </center>
+        
+        </div>
+      </div>
     </div>
-  );
+    </>);
 }
 
 export default RegisterPage;

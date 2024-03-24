@@ -1,5 +1,5 @@
 
-.login-container {
+.register-container {
     display: flex;
     column-gap: 10px;
     justify-content: center;
@@ -23,8 +23,11 @@
     text-align: center;
     justify-content: center;
 
-    .block-2-login {
+    .block-2-register {
         padding-left: 100px;
+    }
+    button {
+        margin-left: 10px;
     }
 }
 

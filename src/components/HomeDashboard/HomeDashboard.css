@@ -45,9 +45,9 @@ h3{
         
     }
 }
-.priority-lvl {
-    color:red;
-    justify-content: right;
+.mx-subheader {
+    font-weight: 500;
+    text-decoration: underline;
 }
 
 
