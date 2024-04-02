@@ -25,6 +25,19 @@ Before continuing any further, make sure you have the following software install
 7. Run `npm run client` to start the frontend.
 8. In your browser, navigate to `http://localhost:5173/`.
 
+## Screen shots
+User dashboard view.
+<img width="1411" alt="Screenshot 2024-04-02 at 4 50 44 PM" src="https://github.com/yalvarez08/Solo-project-app/assets/145588787/94d3de02-4f7c-44e9-9153-46101929770c">
+
+
+<img width="1411" alt="Screenshot 2024-04-02 at 4 51 35 PM" src="https://github.com/yalvarez08/Solo-project-app/assets/145588787/dcfa9ab6-3cb1-4a60-8274-46e85f2e5535">
+
+Calendar view.
+<img width="1411" alt="Screenshot 2024-04-02 at 4 52 20 PM" src="https://github.com/yalvarez08/Solo-project-app/assets/145588787/b9f25086-143d-4605-a4c4-83f596b98dc1">
+
+Manage Items toggle buttons to mark as complete or delete task.
+<img width="1411" alt="Screenshot 2024-04-02 at 4 56 30 PM" src="https://github.com/yalvarez08/Solo-project-app/assets/145588787/6502c0bc-041d-4742-9405-fc4a6d4ac7c2">
+
 
 ## Usage
 1. Register for a new account on the registration page.
@@ -50,4 +63,4 @@ Before continuing any further, make sure you have the following software install
 - Semantic UI React
 
 ## Acknowledgements
-Big thanks to [Prime Digital Academy] (https://www.primeacademy.io/) instructors who gave me advice and dedicated their time to guide me through this solo project. It was a great experience being able to develop this application and I'm glad I get to share it now!
+Big thanks to [Prime Digital Academy](https://www.primeacademy.io/) instructors who gave me advice and dedicated their time to guide me through this solo project. It was a great experience being able to develop this application and I'm glad I get to share it to the public!
