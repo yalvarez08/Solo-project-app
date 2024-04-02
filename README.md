@@ -40,12 +40,12 @@ Before continuing any further, make sure you have the following software install
 
 
 ## Built With
-- [Node.js]
-- [ReactJS]
-- [Redux-Saga]
-- [Express]
-- [Postgres]
-- [FullCalendar]
-- [SweetAlert]
-- [Semantic UI React]
+- Node.js
+- ReactJS
+- Redux-Saga
+- Express
+- Postgres
+- FullCalendar
+- SweetAlert
+- Semantic UI React
 
