@@ -1,6 +1,8 @@
 # Casalogue App
 
-This project is a full-stack CRUD application I created in a 2-week duration. The name of this app is Casalogue. It is a home maintenance task manager for homeowners who need help organizing and keeping track of home-related upkeep tasks. Users can create an account and once logged in, they are able to create tasks, create reminders, edit tasks, update tasks as 'completed', and delete tasks/reminders. In essence, the purpose of this app is to help alleviate the stress and difficulty that often comes with maintaining the condition of one's property. 
+This project is a full-stack CRUD application I created in a 2-week duration. The name of this app is Casalogue. It is a home maintenance task manager for homeowners who need help organizing and keeping track of home-related upkeep tasks. Users can create an account and once logged in, they are able to create tasks, create reminders, edit tasks, update tasks as 'completed', and delete tasks/reminders. In essence, the purpose of this app is to help alleviate the stress and difficulty that often comes with maintaining the condition of one's property.🏡 
+
+The live deployed version of this app can be accessed here : https://casalogue-1fda5eba2eba.herokuapp.com/#/login
 
 ## Getting Started
 
