@@ -29,7 +29,7 @@ Before continuing any further, make sure you have the following software install
 User dashboard view.
 <img width="1411" alt="Screenshot 2024-04-02 at 4 50 44 PM" src="https://github.com/yalvarez08/Solo-project-app/assets/145588787/94d3de02-4f7c-44e9-9153-46101929770c">
 
-
+Item Details view.
 <img width="1411" alt="Screenshot 2024-04-02 at 4 51 35 PM" src="https://github.com/yalvarez08/Solo-project-app/assets/145588787/dcfa9ab6-3cb1-4a60-8274-46e85f2e5535">
 
 Calendar view.
