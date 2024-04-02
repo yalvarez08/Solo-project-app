@@ -49,3 +49,5 @@ Before continuing any further, make sure you have the following software install
 - SweetAlert
 - Semantic UI React
 
+## Acknowledgements
+Big thanks to [Prime Digital Academy] (https://www.primeacademy.io/) instructors who gave me advice and dedicated their time to guide me through this solo project. It was a great experience being able to develop this application and I'm glad I get to share it now!
